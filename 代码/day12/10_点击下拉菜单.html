@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			span{display: block;width: 100px;line-height: 40px;text-align: center;background: #ccc;}
+			ul{margin: 0;width: 120px;border: solid 1px black;display: none;}
+		</style>
+	</head>
+	<body>
+		<span>点我试试</span>
+		<ul>
+			<li>link1</li>
+			<li>link2</li>
+			<li>link3</li>
+			<li>link4</li>
+		</ul>
+	</body>
+	<script type="text/javascript">
+		
+		var ospan = document.querySelector("span")
+		var oul = document.querySelector("ul")
+		
+		ospan.onclick = function(eve){
+			var e = eve || window.event;
+//			e.cancelBubble = true;
+//			e.stopPropagation()
+			oul.style.display = "block";
+		}
+		
+		document.onclick = function(){
+			oul.style.display = "none";
+		}
+		
+	</script>
+</html>

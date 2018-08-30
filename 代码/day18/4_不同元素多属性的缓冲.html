@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#box{width: 100px;height: 400px;background: red;position: absolute;left: 0;top: 0;}
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+	</body>
+	<script type="text/javascript">
+//		运动
+//		运动的原理--->边界处理---->单一元素单一属性缓冲运动--->
+//		不同元素单一属性---->不同元素不同属性---->不同元素多属性---->链式运动
+		
+//		重力加速运动---->回弹---->简单抛物线
+//		圆周运动
+
+//		透明运动
+		
+		var obox = document.getElementById("box")
+		
+		
+		
+		document.onclick = function(){
+//			行业标准：自定义函数的参数，不要超过3个
+			move(obox,{"left":1000,"height":20,"top":190})
+		}
+		
+		function move(ele,json){
+			clearInterval(ele.timer)
+			ele.timer = setInterval(function(){
+//				注意定义开关的位置：用来检测每个属性是否到达目标
+				var onOff = true;
+				for(var attr in json){
+					var iNow = attr=="opacity" ? getStyle(ele,attr)*100 : parseInt(getStyle(ele,attr));
+					
+					var speed = (json[attr]-iNow)/6;
+					speed = speed<0 ? Math.floor(speed) : Math.ceil(speed);
+//					如果没有到达目标,关上开关，如果到目标了，就不操作开关，意味着开关还是打开的
+					if(json[attr] != iNow){
+						onOff = false;
+					}
+					if(attr == "opacity"){
+						ele.style[attr] = (iNow + speed)/100;
+						ele.style.filter = "alpha(opacity="+ (iNow+speed) +")";
+					}else{
+						ele.style[attr] = iNow + speed + "px";
+					}
+				}
+//				如果开关还是打开的,意味着在for循环中,没有关闭开关,没有关闭开关,意味着还有属性没到终点
+				if(onOff){
+					clearInterval(ele.timer);
+				}
+			},30)
+		}
+		
+//		1.先清除计时器
+//		2.开启计时器
+//		3.计算当前值
+//		4.计算步长
+//		5.终点的判断
+//		6.正常改变属性
+		
+		function getStyle(ele,attr){
+			if(ele.currentStyle){
+				return ele.currentStyle[attr];
+			}else{
+				return getComputedStyle(ele,false)[attr];
+			}
+		}
+		
+//		var obj = {}
+//		obj.name = "admin"
+//		console.log(obj)
+	</script>
+</html>

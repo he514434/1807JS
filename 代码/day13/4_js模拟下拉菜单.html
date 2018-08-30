@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#box{width: 400px;margin: 50px auto;}
+			#box input{height: 40px;border: solid 1px black;background: none;width: 358px;}
+			#box ul{margin: 0;padding: 0;list-style: none;width: 356px;border: solid 2px #ccc;background: #eee;display: none;}
+			#box ul li{line-height: 30px;border-bottom: solid 1px #fff;text-indent: 12px;}
+			#box ul li.active{background: #ccc;}
+			
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<input type="text" name="" id="txt" value="" />
+			<ul id="list">
+				<li>link1</li>
+				<li>link2</li>
+				<li>link3</li>
+				<li>link4</li>
+				<li>link5</li>
+			</ul>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var olist = document.getElementById("list");
+		var ali = olist.children;
+		var otxt = document.getElementById("txt");
+//		在键盘控制的时候,充当当前元素的索引
+		var index = -1;
+		
+		otxt.onfocus = function(){
+			olist.style.display = "block"
+		}
+		otxt.onblur = function(){
+			olist.style.display = "none"
+		}
+//		添加鼠标移入显示当前项
+		for(var i=0;i<ali.length;i++){
+//			保存当前li的索引
+			ali[i].liyang = i;
+			ali[i].onmouseover = function(){
+//				为了让鼠标和键盘联动起来,鼠标和键盘要操作同一个索引,所以在鼠标移入的时候,修改index为当前鼠标的li的索引
+				index = this.liyang
+				change()
+			}
+		}
+		otxt.onkeydown = function(eve){
+			var e = eve || window.event
+			var code = e.keyCode || e.which;
+			if(code == 38){
+//				控制index,决定当前哪个li有当前项
+				index = index<=0 ? ali.length-1 : index-1;
+				change()
+			}
+			if(code == 40){
+//				控制index,决定当前哪个li有当前项
+				index = index==ali.length-1 ? 0 : index+1;
+				change()
+			}
+		}
+		
+//		根据当前索引,改变对应li显示当前项
+		function change(){
+			for(var j=0;j<ali.length;j++){
+				ali[j].className = ""
+			}
+			ali[index].className = "active"
+			otxt.value = ali[index].innerHTML
+		}
+	</script>
+</html>

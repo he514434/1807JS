@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body{background-image: url(../day12/1.png);}
+			.box{width: 300px;height: 300px;background: red;}
+		</style>
+	</head>
+	<body>
+		<div class="box"></div>
+	</body>
+	<script type="text/javascript">
+		
+//		运动
+//		运动的原理--->边界处理---->单一元素单一属性缓冲运动--->
+//		不同元素单一属性---->不同元素不同属性---->不同元素多属性---->链式运动
+		
+//		重力加速运动---->回弹---->简单抛物线
+//		圆周运动
+
+//		透明运动
+		
+		var obox = document.querySelector(".box")
+		
+		var target1 = 10;
+		var target2 = 100;
+		
+		var timer = null;
+		
+		var iNow = 100;
+		
+		
+		obox.onmouseover = function(){
+			move(target1)
+		}
+		
+		obox.onmouseout = function(){
+			move(target2)
+		}
+		
+		function move(target){
+			clearInterval(timer);
+			timer = setInterval(function(){
+				var speed = (target - iNow)/6;
+				speed = speed<0 ? Math.floor(speed) : Math.ceil(speed);
+				
+				if(target == iNow){
+					clearInterval(timer)
+				}else{
+					iNow += speed;
+					obox.style.opacity = iNow/100;
+					obox.style.filter = "alpha(opacity="+ iNow +")";
+				}
+				
+			},30)
+		}
+		
+	</script>
+</html>

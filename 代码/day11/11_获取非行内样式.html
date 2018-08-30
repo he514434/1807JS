@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.box{background: red;margin: 50px;border: solid 30px #ccc;padding: 20px;position: absolute;left: 89px;top: 33px;}
+		</style>
+	</head>
+	<body>
+		<div class="box" id="box" style="font-size:30px;width: 100px;height: 100px;">hello</div>
+	</body>
+	<script type="text/javascript">
+		var obox = document.getElementById("box")
+		
+//		console.log(obox.offsetWidth)
+//		console.log(obox.offsetHeight)
+//		console.log(obox.offsetLeft)
+//		console.log(obox.offsetTop)
+		
+//		非行内样式
+//		正常浏览器
+//		console.log(parseInt(getComputedStyle(obox,false).width))
+//		console.log(getComputedStyle(obox,false).height)
+//		console.log(getComputedStyle(obox,false).left)
+//		console.log(getComputedStyle(obox,false).top)
+//		console.log(getComputedStyle(obox,false).background)
+//		console.log(getComputedStyle(obox,false).position)
+//		console.log(getComputedStyle(obox,false).fontSize)
+//		IE浏览器
+//		console.log(obox.currentStyle.width)
+//		console.log(obox.currentStyle)
+		
+		
+		function getStyle(ele,attr){
+			if(ele.currentStyle){
+				return ele.currentStyle[attr];
+			}else{
+				return getComputedStyle(ele,false)[attr];
+			}
+		}
+		
+		console.log(getStyle(obox,"width"))
+		alert(getStyle(obox,"width"))
+		document.write(getStyle(obox,"width"))
+		obox.innerHTML = getStyle(obox,"width")
+		
+//		行内样式
+//		console.log(obox.style.fontSize)
+		
+		
+	</script>
+</html>

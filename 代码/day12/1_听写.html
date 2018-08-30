@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		
+		1.写出数组的方法及作用(5种以上)
+		
+		2.常用的事件有哪些(6种以上)
+		
+		3.如何实现   fn(2)[3](4)[5](6)  的结果为12
+//		function fn(a){
+//			return ["hello","world","heiheihei",function(b){
+//				return [1,2,3,4,5,function(c){
+//					return a + b + c;
+//				}]
+//			}]
+//		}
+		
+		4.以下函数的执行结果为???,如果想让每次的执行结果累加1,该如何改进(不允许出现全局变量)
+		function fn(){
+			var a = 10;
+			return function(){
+				a++;
+				console.log(a)
+			}
+		}
+//		fn();		//11
+//		fn();		//11
+//		fn();		//11
+		var foo = fn()
+		foo();		//11
+		foo();		//12
+		foo();		//13
+		
+		5.如何创建一个div,并将这个div插入到ocont的元素对象中
+		var div = document.createElement("div")
+		ocont.appendChild(div)
+		
+		6.如何拿到页面的滚动距离 / 页面的可视大小
+		document.documentElement.scrollTop
+		document.documentElement.scrollLeft
+		
+		document.documentElement.clientWidth
+		document.documentElement.clientHeight
+		
+		7.js中刷新当前页面的方法有哪几种?
+		location.reload()
+		history.go(0)
+		
+		8.js中隐示类型转换的规则有哪些,列出你知道的
+			1.数值:非0为true
+			2.字符:非空为true
+			3.undefined和NaN和null为false
+			4.对象为true
+			5.true为1,false为0
+			6.函数为true
+		
+		9.姓名
+		
+		
+	</script>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.box{border-radius: 50%;position: absolute;}
+			span{position: absolute;left: 400px;bottom: 400px;width: 50px;}
+			input{position: absolute;z-index: 10;}
+			#btn1{left: 0;}
+			#btn2{left: 30px;}
+			#btn3{left: 60px;}
+		</style>
+	</head>
+	<body>
+		<input type="button" name="" id="btn1" value="+" />
+		<input type="button" name="" id="btn2" value="-" />
+		<input type="color" name="" id="btn3" value="" />
+		<span></span>
+	</body>
+	<script type="text/javascript">
+		
+		var ospan = document.querySelector("span");
+		var obtn1 = document.getElementById("btn1");
+		var obtn2 = document.getElementById("btn2");
+		var obtn3 = document.getElementById("btn3");
+		
+//		全局变量,分别表示宽高和颜色,因为要在点击按钮的时候改变,所以必须是全局的
+		var w = h = 10;		//默认宽高为10
+		var c = "#000";		//默认颜色为黑色
+		
+//		移动的时候,触发事件
+		document.onmousemove = function(eve){
+//			解决事件对象的兼容
+			var e = eve || window.event
+//			console.log(e.clientX,e.clientY)
+//			实时显示坐标信息(事件触发时相对于可视区域的坐标)
+			ospan.innerHTML = e.clientX + "," + e.clientY;
+//			移动的时候不断的创建div，当成点，准备画线
+			var div = document.createElement("div")
+			div.className = "box";
+//			根据全局的变量设置宽高和颜色,因为点击按钮的时候,全局变量可被修改
+			div.style.width = w + "px";
+			div.style.height = h + "px";
+			div.style.background = c;
+//			将点的位置,设置成鼠标当前触发事件的位置，这样才能跟随鼠标
+			div.style.left = e.clientX + "px"
+			div.style.top = e.clientY + "px"
+//			插入div
+			document.body.appendChild(div)
+		}
+//		点击+按钮时,增大宽高的全局变量的值,等待下次移动时生效
+		obtn1.onclick = function(){
+			w+=5;
+			h+=5;
+		}
+//		点击+按钮时,减小宽高的全局变量的值,等待下次移动时生效，给一个最小值，防止完全消失
+		obtn2.onclick = function(){
+			if(w <= 5){
+				w = 5;
+				h = 5;
+			}else{
+				w-=5;
+				h-=5;
+			}
+		}
+//		点击颜色按钮时,改变颜色的全局变量的值,等待下次移动时生效
+		obtn3.onchange = function(){
+			c = this.value;
+		}
+		
+	</script>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{margin: 0;padding: 0;}
+			.cont{width: 300px;height: 400px;border: solid 1px black;margin: 40px auto;}
+			.msg{height: 300px;overflow: auto;}
+			.msg div{max-width: 260px;padding: 6px;border-radius: 6px;margin: 6px;clear: both;}
+			.msg div:nth-child(2n){float: left;background: limegreen;}
+			.msg div:nth-child(2n-1){float: right;background: dodgerblue;}
+			
+			.ctrl{height: 100px;border-top: solid 1px black;box-sizing: border-box;}
+			.ctrl *{height: 99px;border: none;background: none;float: left;}
+			#txt{width: 239px;border-right: solid 1px black;resize: none;}
+			#btn{background: #ccc;width: 60px;}
+		</style>
+	</head>
+	<body>
+		<div class="cont">
+			<div class="msg"></div>
+			<div class="ctrl">
+				<textarea name="" rows="" cols="" id="txt"></textarea>
+				<input type="button" name="" id="btn" value="发送" />
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var otxt = document.getElementById("txt")
+		var obtn = document.getElementById("btn")
+		var omsg = document.querySelector(".msg")
+		
+//		因为选择器有两种选择方式:动态获取,静态获取
+//			动态:初始没有,后期添加,也能获取的到
+//			静态:初始没有,一直没有
+		
+//		选择静态,不是因为方便
+//		如果要方便,那应该使用动态,但是此处要提现代码的执行逻辑,所以采用静态,所以获取不到,所以在添加之后再次获取
+		
+//		var achild = omsg.children;
+//		var adiv = omsg.getElementsByTagName("div");
+//		var adiv = document.querySelectorAll(".msg div");
+		
+		var sum = 0;
+		
+		obtn.onclick = function(){
+			
+			var div = document.createElement("div")
+			div.innerHTML = otxt.value;
+			omsg.appendChild(div)
+			
+//			console.log(achild)
+//			console.log(adiv)
+//			console.log(adiv)
+
+//			因为静态获取不到,所以在添加之后,再获取
+			sum += div.offsetHeight + 12;
+			
+			omsg.scrollTop = sum;
+		}
+		
+	</script>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+//		栈堆
+//		var a = 10;
+//		console.log(a)
+//		var b = a;
+//		console.log(b)
+//		b = 20;
+//		console.log(a)
+//		console.log(b)
+//		
+//		
+//		var obj = {
+//			name:"admin"
+//		}
+//		var obj2 = obj;		
+//		obj2.name = "root";
+//		console.log(obj)
+//		console.log(obj2)
+		
+		
+		
+//		数值
+//		字符
+//		布尔
+//		...
+//		值传递:复制时,复制的是堆中的数据
+		
+//		对象
+//		引用传递:复制时,复制的是指向堆数据的内存地址(指针)
+		
+//		对象的深浅拷贝：
+//			浅拷贝:修改复制之后的对象,会影响原对象的值
+//			深拷贝:修改复制之后的对象,不会影响原对象的值
+		
+		var obj = {
+			sex1:"admin",
+			sex2:"admin",
+			sex3:"admin",
+			sex4:"admin",
+			sex5:"admin",
+		}
+		
+		var obj2 = {}
+		
+		for(var i in obj){
+			obj2[i] = obj[i]
+		}
+		
+		console.log(obj)
+		console.log(obj2)
+		
+		
+		
+	</script>
+</html>

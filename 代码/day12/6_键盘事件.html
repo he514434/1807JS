@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		
+		document.onkeydown = function(eve){
+			var e = eve || window.event;
+			console.log(e)
+//			document.body.style.background = "red";
+//			console.log(e.keyCode)
+			
+			var code = e.keyCode || e.which;
+			console.log(code)
+			console.log(e.ctrlKey)
+			
+//			if(e.keyCode == 13){
+//				document.body.style.background = "red";
+//			}
+			
+		}
+		
+	</script>
+</html>

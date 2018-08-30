@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.cont{width: 1130px;height: 300px;margin: 20px auto;position: relative;}
+			.imgbox{position: absolute;left: 0;top: 0;}
+			.imgbox a{float: left;width: 1130px;height: 300px;}
+			
+			.imgbox a img{width: 1130px;height: 300px;}
+			input{width: 50px;height: 50px;border: none;background: rgba(200,200,200,0.6);position: absolute;top: 125px;z-index: 9999999;}
+			#prev{left: 0;}
+			#next{right: 0;}
+		</style>
+	</head>
+	<body>
+		<div class="cont">
+			<div class="imgbox">
+				<a href=""><img src="https://img.zcool.cn/community/01c4005b863607a80120245cc788a1.jpg@1380w"/></a>
+				<a href=""><img src="https://img.zcool.cn/community/01eb7b5b85ff52a80120245c031a6b.jpg@1380w"/></a>
+				<a href=""><img src="https://img.zcool.cn/community/01327f5b8422c7a80120577d2aa796.png@1380w"/></a>
+				<a href=""><img src="https://img.zcool.cn/community/0174f85b8422f2a8012190f2b97fa9.png@1380w"/></a>
+				<a href=""><img src="https://img.zcool.cn/community/01c4005b863607a80120245cc788a1.jpg@1380w"/></a>
+			</div>
+			<input type="button" name="" id="prev" value="<<<" />
+			<input type="button" name="" id="next" value=">>>" />
+		</div>
+	</body>
+	<script src="../move.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		var oimgbox = document.querySelector(".imgbox")
+		var aimg = oimgbox.children;
+		var onext = document.getElementById("next")
+		
+//		通过js动态设置图片框的宽度,实现不管几张图片都可以正好在一行显示
+		oimgbox.style.width = aimg.length * aimg[0].offsetWidth + "px";
+		
+		var index = 0;		//默认初始图片的索引
+		onext.onclick = function(){
+//			如果索引为最后一张图了
+			if(index == aimg.length-1){
+//				把索引设置为第二张图的值
+				index = 1;
+//				同时强行把图片框拉到0的位置
+				oimgbox.style.left = 0;
+			}else{
+//				正常增加
+				index++
+			}
+			
+//			紧接着立即开始运动到第二张图片的位置
+			move(oimgbox,{left:-index*aimg[0].offsetWidth});
+		}
+		
+	</script>
+</html>

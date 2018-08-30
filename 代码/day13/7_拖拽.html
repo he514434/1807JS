@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.box{width:100px;height:100px;background: red;position: absolute;}
+		</style>
+	</head>
+	<body>
+		<div class="box"></div>
+	</body>
+	<script type="text/javascript">
+		var obox = document.querySelector(".box");
+		var clientW = document.documentElement.clientWidth
+		var clientH = document.documentElement.clientHeight
+		
+//		先在当前元素按下鼠标
+		obox.onmousedown = function(eve){
+			var e = eve || window.event;
+//			立即获取当按下的位置
+			var disX = e.offsetX
+			var disY = e.offsetY
+//			按下鼠标才有移动
+			document.onmousemove = function(eve){
+				var e = eve || window.event;
+//				移动的时候,要减去按下的坐标,实现让鼠标固定在元素的按下那一点上
+				var l = e.clientX - disX;
+				var t = e.clientY - disY;
+//				边界限定
+				if(l<0) l=0;
+				if(t<0) t=0;
+				if(l > clientW - obox.offsetWidth){
+					l = clientW - obox.offsetWidth
+				}
+				if(t > clientH - obox.offsetHeight){
+					t = clientH - obox.offsetHeight
+				}
+//				将坐标生效
+				obox.style.left = l + "px";
+				obox.style.top = t + "px";
+			}
+//			按下鼠标才有抬起
+			document.onmouseup = function(){
+//				抬起的时候,清除掉移动事件
+//				以为已经抬起鼠标了,抬起事件也没用了,也可以清掉
+				document.onmousemove = document.onmouseup = null;
+			}
+		}
+		
+	</script>
+</html>

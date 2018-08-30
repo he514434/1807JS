@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<img src="1.png" id="i"/>
+	</body>
+	<script type="text/javascript">
+		var oimg = document.getElementById("i")
+		
+		console.log(oimg)
+		console.dir(oimg)
+		
+		oimg.onload = function(){
+			
+			console.log(oimg.offsetWidth)
+			console.log(oimg.style.width)
+			console.log(getComputedStyle(oimg,false).width)
+			console.log(oimg.clientWidth)
+			
+		}
+	</script>
+</html>

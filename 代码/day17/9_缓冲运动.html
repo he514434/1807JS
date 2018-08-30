@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.box{width: 100px;height: 100px;background: red;position: absolute;left:1000px}
+			.line{width: 1px;height: 600px;background: #000;position: absolute;left: 500px;top: 0;}
+		</style>
+	</head>
+	<body>
+		<input type="button" name="btn" id="btn" value="开始" />
+		<div class="box"></div>
+		<div class="line"></div>
+	</body>
+	<script type="text/javascript">
+		
+//		运动
+//		运动的原理--->边界处理---->单一元素单一属性缓冲运动--->不同元素单一属性---->不同元素不同属性---->不同元素多属性---->链式运动
+		
+//		重力加速运动---->回弹---->简单抛物线
+//		圆周运动
+
+//		透明运动
+		
+		
+//		var speed = 20;		缓冲运动的步长，需要通过计算得来，不能提前声明
+		
+		var target = 500;
+		var timer = null;
+		
+		var obtn = document.getElementById("btn")
+		var obox = document.querySelector(".box");
+		
+		obtn.onclick = function(){
+			move()
+		}
+		
+		function move(){
+			clearInterval(timer);
+			timer = setInterval(function(){
+//				在计时器中能够实时的拿到当前的位置,将步长设置为当前位置和终点之间的差值的10分支1
+				var speed = (target - obox.offsetLeft)/7;
+				
+				if(speed<0){
+					speed = Math.floor(speed)
+				}else{
+					speed = Math.ceil(speed)
+				}
+				
+				if(obox.offsetLeft == target){
+					clearInterval(timer)
+				}else{
+					obox.style.left = obox.offsetLeft + speed + "px";
+				}
+				
+				console.log(speed)
+				
+			},30)
+		}
+		
+	</script>
+</html>

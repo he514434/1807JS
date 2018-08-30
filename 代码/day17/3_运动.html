@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#box{width: 100px;height: 100px;background: red;position: absolute;left: 0;}
+		</style>
+	</head>
+	<body>
+		<input type="button" name="btn" id="btn" value="" />
+		<div id="box"></div>
+	</body>
+	<script type="text/javascript">
+		
+//		某个物体随着时间的变化改变自身的属性
+//		1秒,切换连续的24张图片,眼睛就识别不出来卡顿
+
+//		fps
+//		180
+//		60
+//		70
+//		24fps
+		
+//		obox
+//		setInterval(function(){},30)
+//		left
+		var obtn = document.getElementById("btn")
+		var obox = document.getElementById("box")
+		
+//		运动的三要素
+//			1.步长
+//			2.频率
+//			3.目标
+		
+		var speed = 3;
+		var target = 900;
+		var timer = null;
+		
+		obtn.onclick = function(){
+			clearInterval(timer);					
+			timer = setInterval(function(){
+				console.log(obox.offsetLeft)
+				if(obox.offsetLeft >= target){			//判断是否到终点，微调
+					clearInterval(timer)
+					obox.style.left = target + "px";
+				}else{
+//					必须二选一，因为可能到达终点后会再次点击
+					obox.style.left = obox.offsetLeft + speed + "px";
+				}
+			},30)
+		}
+		
+		
+	</script>
+</html>

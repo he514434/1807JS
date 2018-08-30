@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#box{width: 100px;height: 100px;background: red;}
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+		<!--<ul>
+			<li>link1</li>
+			<li>link2</li>
+			<li>link3</li>
+			<li>link4</li>
+			<li>link5</li>
+			<li>link6</li>
+		</ul>-->
+	</body>
+	<script type="text/javascript">
+		
+//		this：当前函数的执行上下文，当前函数被哪个对象调用，this就是那个对象
+
+		
+//		var obj = {
+//			name:"admin",
+//			show:function(){
+//				console.log(this)		//obj
+//				console.log(this.name)
+//			}
+//		}
+//		obj.show()
+		
+//		function fn(){
+//			console.log(this)			//window
+//		}
+//		fn()
+		
+		
+//		var obj = {
+//			name:"admin",
+//			show:function(fn){
+//				fn()
+//			}
+//		}
+//		obj.show(function(){
+//			console.log(this)			//window
+//		})
+		
+//		谁调用了this所在的函数,this就指向谁
+//		函数只能被对象调用,如果没有任何一个对象调用函数,那么就是window调用了这个函数
+		
+//		var obox = document.getElementById("box")
+//		obox.onclick = function(){
+//			console.log(this)			//obox
+//		}
+
+//		var ali = document.querySelectorAll("li")
+//		for(var i=0;i<ali.length;i++){
+//			ali[i].onclick = function(){
+//				console.log(this)		//点击的li
+//			}
+//		}
+
+//		var obox = document.getElementById("box")
+//		obox.onclick = function(){
+//			setTimeout(function(){
+//				console.log(this)		//window
+//			},1000)
+//		}
+
+//		box.onclick = function(){
+//			console.log(this)
+//		}
+//		box.onclick();			//box
+//		var foo = box.onclick;
+//		foo();					//window
+		
+	</script>
+</html>

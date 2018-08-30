@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body>div{width: 1000px;height: 100px;padding: 10px 0;position: relative;border: solid 1px black;margin: 20px auto;}
+			div>div{width: 100px;height: 100px;background: red;position: absolute;left: 0;}
+		</style>
+	</head>
+	<body>
+		<div id="box1">
+			<div id="xbox1"></div>
+		</div>
+		<div id="box2">
+			<div id="xbox2"></div>
+		</div>
+		<div id="box3">
+			<div id="xbox3"></div>
+		</div>
+	</body>
+	<script type="text/javascript">
+//		运动
+//		运动的原理--->边界处理---->单一元素单一属性缓冲运动--->
+//		不同元素单一属性---->不同元素不同属性---->不同元素多属性---->链式运动
+		
+//		重力加速运动---->回弹---->简单抛物线
+//		圆周运动
+
+//		透明运动
+		
+		var obox1 = document.getElementById("box1")
+		var obox2 = document.getElementById("box2")
+		var obox3 = document.getElementById("box3")
+		var oxbox1 = document.getElementById("xbox1")
+		var oxbox2 = document.getElementById("xbox2")
+		var oxbox3 = document.getElementById("xbox3")
+		
+		
+		obox1.onmouseover = function(){
+			move(oxbox1,"left",900)
+		}
+		obox1.onmouseout = function(){
+			move(oxbox1,"left",0)
+		}
+		
+		obox2.onmouseover = function(){
+			move(oxbox2,"width",900)
+		}
+		obox2.onmouseout = function(){
+			move(oxbox2,"width",0)
+		}
+		
+		obox3.onmouseover = function(){
+			move(oxbox3,"opacity",10)
+		}
+		obox3.onmouseout = function(){
+			move(oxbox3,"opacity",100)
+		}
+		
+		function move(ele,attr,target){
+			clearInterval(ele.timer)
+			ele.timer = setInterval(function(){
+//				当前值的获取,因为要可能操作到透明,透明属性不能通过offset系列获取,只能通过获取样式的方式
+//				又因为透明和其他属性的值格式不同,分开处理
+				var iNow = attr=="opacity" ? getStyle(ele,attr)*100 : parseInt(getStyle(ele,attr));
+//				步长的计算
+				var speed = (target-iNow)/6;
+				speed = speed<0 ? Math.floor(speed) : Math.ceil(speed);
+//				终点的判断
+				if(target == iNow){
+					clearInterval(ele.timer)
+				}else{
+//					因为透明的设置和其他属性不同,所以要分开设置
+					if(attr == "opacity"){
+						ele.style[attr] = (iNow + speed)/100;
+						ele.style.filter = "alpha(opacity="+ (iNow+speed) +")";
+					}else{
+						ele.style[attr] = iNow + speed + "px";
+					}
+				}
+			},30)
+		}
+		
+//		1.先清除计时器
+//		2.开启计时器
+//		3.计算当前值
+//		4.计算步长
+//		5.终点的判断
+//		6.正常改变属性
+		
+		function getStyle(ele,attr){
+			if(ele.currentStyle){
+				return ele.currentStyle[attr];
+			}else{
+				return getComputedStyle(ele,false)[attr];
+			}
+		}
+		
+//		var obj = {}
+//		obj.name = "admin"
+//		console.log(obj)
+	</script>
+</html>

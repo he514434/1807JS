@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+//		事件对象
+//		obox.onclick = function(){
+//			this.style.background = "blue";
+//		}
+//		事件源：触发事件的元素
+//		事件类型:什么样的行为
+//		事件处理函数:专门用来处理,当出发这个事件的时候,要做的事情
+		
+//		事件对象?
+//		如何让召唤事件对象?
+		
+		document.onclick = function(eve){
+//			拿到当前点击的位置的坐标
+//			console.log(eve)
+//			console.log(window.event)
+//			console.log(eve.offsetX,eve.offsetY)
+			var e = eve || window.event;
+			console.log(e.offsetX)
+			console.log(e.offsetY)
+		}
+		
+		
+	</script>
+</html>

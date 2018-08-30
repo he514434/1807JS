@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			ul{background: #aaa;}
+			ul li{background: #ccc;margin: 10px 0;}
+		</style>
+	</head>
+	<body>
+		<ul>
+			<li>link1</li>
+			<li>link2</li>
+			<li>link3</li>
+			<li>link4</li>
+			<li>link5</li>
+			<li>link6</li>
+		</ul>
+	</body>
+	<script type="text/javascript">
+//		点击每个li的时候,打印出当前li的内容
+		
+//		但是,不想让每一个li都有点击事件,指向存在一个点击事件
+		
+//		var ali = document.querySelectorAll("li")
+//		for(var i=0;i<ali.length;i++){
+//			ali[i].onclick = function(){
+//				console.log(this.innerHTML)
+//			}
+//		}
+		
+		var oul = document.querySelector("ul")
+		oul.onclick = function(eve){
+			var e = eve || window.event
+			if(e.target.nodeName == "LI"){
+				console.log(e.target.innerHTML)
+			}
+		}
+		
+//		事件委托的概念:
+//			将多个相同子元素的相同事件,委托给共同的父元素,利用了事件冒泡,结合事件对象身上存放的事件源,实现给每个子元素绑定事件的结果
+	</script>
+</html>

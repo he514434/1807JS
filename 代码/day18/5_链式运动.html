@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#box1{width: 100px;height: 100px;background: red;position: absolute;left: 0;top: 0;}
+			#box2{width: 100px;height: 100px;background: blue;position: absolute;left: 0;top: 100px;}
+		</style>
+	</head>
+	<body>
+		<div id="box1"></div>
+		<div id="box2"></div>
+	</body>
+	<script type="text/javascript">
+		var obox1 = document.getElementById("box1")
+		var obox2 = document.getElementById("box2")
+		
+		document.onclick = function(){
+			
+//			move(obox,{left:400},function(){
+//				move(obox,{top:300},function(){
+//					move(obox,{left:800},function(){
+//						move(obox,{top:0},function(){
+//							move(obox,{left:1100})
+//						})
+//					})
+//				})
+//			})
+			
+			
+//			move(obox,{left:300},function(){
+//				obox.style.background = "yellow"
+//			})
+
+			move(obox1,{left:300},function(){
+				move(obox2,{left:200},function(){
+					move(obox1,{top:300},function(){
+						move(obox2,{top:200})
+					})
+				})
+			})
+			
+		}
+		
+		function move(ele,json,callback){
+			clearInterval(ele.timer);
+			ele.timer = setInterval(function(){
+				var onOff = true;
+				for(var attr in json){
+					var iNow = attr=="opacity" ? getStyle(ele,attr)*100 : parseInt(getStyle(ele,attr))
+					
+					var speed = (json[attr]-iNow)/6;
+					speed = speed<0 ? Math.floor(speed) : Math.ceil(speed);
+					
+					if(json[attr] != iNow){
+						onOff = false;
+					}
+					
+					if(attr == "opacity"){
+						ele.style.opacity = (iNow+speed)/100;
+						ele.style.filter = "alpha(opacity="+ (iNow+speed) +")";
+					}else{
+						ele.style[attr] = iNow+speed + "px";
+					}
+				}
+				if(onOff){
+					clearInterval(ele.timer);
+//					alert("动画结束了，可以开始下一个了")
+//					在当前动画结束后,传一个回调函数，回调函数会在动画结束时执行
+					if(callback) callback();
+				}
+			},30)
+		}
+		
+		function getStyle(ele,attr){
+			if(ele.currentStyle){
+				return ele.currentStyle[attr]
+			}else{
+				return getComputedStyle(ele,false)[attr];
+			}
+		}
+		
+	</script>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#cont{width: 1000px;height: 500px;margin: 50px auto;border: solid 1px black;position: relative;}
+			#box{width: 100px;height: 100px;background: red;position: absolute;left: 0;border-radius: 50%;}
+		</style>
+	</head>
+	<body>
+		<div id="cont">
+			<div id="box"></div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		
+//		运动
+//		运动的原理--->边界处理---->单一元素单一属性缓冲运动--->不同元素单一属性---->不同元素不同属性---->不同元素多属性---->链式运动
+		
+//		重力加速运动---->回弹---->简单抛物线
+//		圆周运动
+
+//		透明运动
+		
+		
+		var ocont = document.getElementById("cont")
+		var obox = document.getElementById("box")
+		
+		var speed = 10;
+		var target = ocont.offsetHeight - obox.offsetHeight - 2;
+		var timer = null;
+		
+		var g = 1;	//重力
+		
+		ocont.onclick = function(){
+			clearInterval(timer);
+			timer = setInterval(function(){
+				
+				speed += g;		//每次计时器执行，增大步长
+				
+//				if(obox.offsetTop >= target){
+//				if(speed >= target-obox.offsetTop){
+				if(target - obox.offsetTop < speed){		//修整终点的判断
+					clearInterval(timer)
+					obox.style.top = target + "px";
+				}else{
+					obox.style.top = obox.offsetTop + speed + "px";
+				}
+			},30)
+		}
+		
+		
+	</script>
+</html>

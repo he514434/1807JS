@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.box{width: 400px;height: 50px;margin: 30px auto;display: flex;align-items: center;text-align: center;}
+			.box span{width: 40px;}
+			.box em{width: 40px;}
+			.box .bar{width: 280px;background: #ccc;height: 50px;position: relative;}
+			.bar p{width: 0;height: 20px;border-radius: 4px;background: red;top: 15px;position: absolute;margin: 0;}
+			.bar b{width: 10px;height: 40px;top: 5px;background: blue;left: -5px;position: absolute;border-radius: 4px;}
+		</style>
+	</head>
+	<body>
+		<!--<input type="range" name="" id="" value="" />-->
+		<div class="box">
+			<span></span>
+			<em>0</em>
+			<div class="bar">
+				<p></p>
+				<b></b>
+			</div>
+			<em>100</em>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var obar = document.querySelector(".bar");
+		var op = obar.children[0];
+		var ob = obar.children[1];
+		var ospan = document.querySelector("span");
+		
+		ob.onmousedown = function(eve){
+			var e = eve || window.event;
+			var disX = e.offsetX;
+			document.onmousemove = function(eve){
+				var e = eve || window.event;
+//				因为元素在页面中的某个位置,并且移动事件是加给document,所以当前滑动的距离如果使用client系列的话,需要减去父元素的offsetLeft
+				var l = e.clientX - obar.offsetLeft;
+				
+				if(l<0) l=0;
+				if(l > obar.offsetWidth){
+					l = obar.offsetWidth
+				}
+				
+				ospan.innerHTML = parseInt(l/obar.offsetWidth*100) + "%";
+				
+				op.style.width = l + "px";
+				ob.style.left = l-5+"px";
+			}
+			document.onmouseup = function(){
+				document.onmousemove = document.onmouseup = null;
+			}
+		}
+		
+		
+	</script>
+</html>

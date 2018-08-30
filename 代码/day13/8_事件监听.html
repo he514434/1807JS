@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#box{width: 100px;height: 100px;background: red;}
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+	</body>
+	<script type="text/javascript">
+//		事件
+//		事件对象
+//		事件冒泡
+//		默认事件
+
+//		事件监听
+//		赋值式
+//		DOM0级绑定事件
+//		var obox = document.getElementById("box")
+//		obox.onclick = function(){
+//			console.log(1)
+//		}
+////		重复添加相同事件
+//		obox.onclick = function(){
+//			console.log(2)
+//		}
+//		obox.onclick = null;
+		
+//		DOM2级绑定事件
+//		事件监听绑定事件
+//		var obox = document.getElementById("box")
+//		obox.addEventListener("click",function(){
+//			console.log(1)
+//		},false)
+//		obox.addEventListener("click",fn2,false)
+//		function fn2(){
+//			console.log(2)
+//		}
+//		obox.addEventListener("click",function(){
+//			console.log(3)
+//		},false)
+//		obox.removeEventListener("click",fn2,false)
+
+
+//		句柄
+		
+		
+//		obox.attachEvent("onclick",fn1)
+//		function fn1(){
+//			console.log(1)
+//		}
+//		obox.attachEvent("onclick",function(){
+//			console.log(2)
+//		})
+//		obox.attachEvent("onclick",function(){
+//			console.log(3)
+//		})
+//		
+//		obox.detachEvent("onclick",fn1)
+		
+		function addEvent(ele,type,callback){
+			if(ele.addEventListener){
+				ele.addEventListener(type,callback,false)
+			}else if(ele.attachEvent){
+				ele.attachEvent("on"+type,callback)
+			}else{
+				ele["on"+type] = callback;
+			}
+		}
+		function removeEvent(ele,type,callback){
+			if(ele.removeEventListener){
+				ele.removeEventListener(type,callback,false)
+			}else if(ele.detachEvent){
+				ele.detachEvent("on"+type,callback)
+			}else{
+				ele["on"+type] = null;
+			}
+		}
+		
+		var obox = document.getElementById("box");
+		addEvent(obox,"click",function(){
+			console.log(1)
+		})
+		addEvent(obox,"click",fn2)
+		function fn2(){
+			console.log(2)
+		}
+		addEvent(obox,"click",function(){
+			console.log(3)
+		})
+		
+		removeEvent(obox,"click",fn2)
+		
+//		事件委托
+	</script>
+</html>

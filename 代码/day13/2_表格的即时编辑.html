@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<table border="1" cellspacing="0" width="700" align="center">
+			<thead>
+				<th>学号</th>
+				<th>姓名</th>
+				<th>性别</th>
+				<th>成绩</th>
+				<th>操作</th>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Data</td>
+					<td>Data</td>
+					<td>Data</td>
+					<td>Data</td>
+					<td><span>删除</span></td>
+				</tr>
+				<tr>
+					<td>Data</td>
+					<td>Data</td>
+					<td>Data</td>
+					<td>Data</td>
+					<td><span>删除</span></td>
+				</tr>
+				<tr>
+					<td>Data</td>
+					<td>Data</td>
+					<td>Data</td>
+					<td>Data</td>
+					<td><span>删除</span></td>
+				</tr>
+				<tr>
+					<td>Data</td>
+					<td>Data</td>
+					<td>Data</td>
+					<td>Data</td>
+					<td><span>删除</span></td>
+				</tr>
+				<tr>
+					<td>Data</td>
+					<td>Data</td>
+					<td>Data</td>
+					<td>Data</td>
+					<td><span>删除</span></td>
+				</tr>
+			</tbody>
+		</table>
+	</body>
+	<script type="text/javascript">
+		var otbody = document.querySelector("tbody")
+		var atd = otbody.getElementsByTagName("td");
+		
+		for(var i=0;i<atd.length;i++){
+			atd[i].onclick = function(){
+//				创建input,把td的内容设置成input的value，并插入到td中，插入之前要清空input
+				var ipt = document.createElement("input")
+				ipt.value = this.innerHTML;
+				this.innerHTML = "";
+				this.appendChild(ipt)
+//				插入input之后,立即获取焦点,提升用户体验
+				ipt.focus()
+//				同时阻止事件冒泡,防止用户万一再点一次,重复触发td的事件
+				ipt.onclick = function(eve){
+					var e = eve || window.event;
+					e.cancelBubble = true;
+					e.stopPropagation()
+				}
+//				修改完内容之后,将修改之后的内容再设置回td
+//				var that = this
+				ipt.onblur = function(){
+//					that.innerHTML = this.value;
+					this.parentNode.innerHTML = this.value;
+				}
+			}
+		}
+		
+//		删除操作
+		var aspan = otbody.getElementsByTagName("span");
+		for(var i=0;i<aspan.length;i++){
+			aspan[i].onclick = function(eve){
+//				为了重复触发td的事件,阻止事件冒泡,删除就是删除
+				var e = eve || window.event;
+				e.cancelBubble = true;
+				e.stopPropagation()
+//				根据当前点击的span找到一整行内容,删除
+				this.parentNode.parentNode.remove()
+			}
+		}
+		
+		
+	</script>
+</html>

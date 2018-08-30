@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body>div{width: 1000px;height: 100px;padding: 10px 0;position: relative;border: solid 1px black;margin: 20px auto;}
+			div>div{width: 100px;height: 100px;background: red;position: absolute;left: 0;}
+		</style>
+	</head>
+	<body>
+		<div id="box1">
+			<div id="xbox1"></div>
+		</div>
+		<div id="box2">
+			<div id="xbox2"></div>
+		</div>
+		<div id="box3">
+			<div id="xbox3"></div>
+		</div>
+	</body>
+	<script type="text/javascript">
+//		运动
+//		运动的原理--->边界处理---->单一元素单一属性缓冲运动--->
+//		不同元素单一属性---->不同元素不同属性---->不同元素多属性---->链式运动
+		
+//		重力加速运动---->回弹---->简单抛物线
+//		圆周运动
+
+//		透明运动
+		
+		var obox1 = document.getElementById("box1")
+		var obox2 = document.getElementById("box2")
+		var obox3 = document.getElementById("box3")
+		var oxbox1 = document.getElementById("xbox1")
+		var oxbox2 = document.getElementById("xbox2")
+		var oxbox3 = document.getElementById("xbox3")
+		
+		
+		obox1.onmouseover = function(){
+			move(oxbox1,900)
+		}
+		obox1.onmouseout = function(){
+			move(oxbox1,0)
+		}
+		
+		obox2.onmouseover = function(){
+			move(oxbox2,900)
+		}
+		obox2.onmouseout = function(){
+			move(oxbox2,0)
+		}
+		
+		obox3.onmouseover = function(){
+			move(oxbox3,900)
+		}
+		obox3.onmouseout = function(){
+			move(oxbox3,0)
+		}
+		
+		function move(ele,target){
+//			因为要操作不同元素,不能使用同一个计时器变量了
+//			为了让操作不同元素的时候,是对应不同的计时器变量
+//			把元素传进来之后,当成一个对象进行操作,给ele添加一个属性，存储当前对应的计时器
+			clearInterval(ele.timer)
+			ele.timer = setInterval(function(){
+				var speed = (target-ele.offsetLeft)/6;
+				speed = speed<0 ? Math.floor(speed) : Math.ceil(speed);
+				
+				if(target == ele.offsetLeft){
+					clearInterval(ele.timer)
+				}else{
+					ele.style.left = ele.offsetLeft + speed + "px";
+				}
+			},30)
+		}
+		
+//		var obj = {}
+//		obj.name = "admin"
+//		console.log(obj)
+	</script>
+</html>

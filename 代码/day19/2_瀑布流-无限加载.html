@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{margin: 0;padding: 0;}
+			#cont{margin: 0 auto;width:auto;position: relative;}
+			.box{float: left;padding: 6px;}
+			.imgbox{border: solid 1px black;padding: 6px;border-radius: 4px;}
+			.imgbox img{width: 200px;margin: 0;display: block;}
+		</style>
+		<script type="text/javascript">
+			var data = [{src:"images/1.jpg"},{src:"images/2.jpg"},{src:"images/3.jpg"},{src:"images/4.jpg"},{src:"images/5.jpg"},{src:"images/6.jpg"},{src:"images/7.jpg"},{src:"images/8.jpg"},{src:"images/9.jpg"},{src:"images/10.jpg"}];
+			
+			onload = function(){
+				load()
+			}
+			
+			onscroll = function(){
+				if(isBottom()){
+//					console.log("加载数据")
+					var str = ""
+					for(var i=0;i<data.length;i++){
+						str += `<div class="box">
+									<div class="imgbox">
+										<img src="${data[i].src}"/>
+									</div>
+								</div>`;
+					}
+					document.getElementById("cont").innerHTML += str;
+					load();
+				}
+			}
+			
+			var clientH = document.documentElement.clientHeight;
+			function isBottom(){
+				var scrollT = document.documentElement.scrollTop;
+				var abox = document.getElementById("cont").children;
+				var lastT = abox[abox.length-1].offsetTop;
+//				因为布局用的是定位,定位相对的是最顶端,那么最后一个元素的top相当于页面的总高度
+//				在滚动的时候,实时拿到滚动的距离,加上屏幕的高度,如果接近页面的总高度,说明快到底了
+//				就可以加载数据了
+				if(lastT < clientH + scrollT){
+					return true
+				}else{
+					return false;
+				};
+			}
+			
+			
+			function load(){
+				var ocont = document.getElementById("cont");
+				var abox = ocont.children;
+				var clientW = document.documentElement.clientWidth;
+//				设置大框宽度,让大矿能够根据屏幕自动居中
+				var maxNum = parseInt(clientW/abox[0].offsetWidth);
+				ocont.style.width = maxNum * abox[0].offsetWidth + "px";
+//				定义数组,准备存储第一行初始的高度
+				var heightArr = [];
+				for(var i=0;i<maxNum;i++){
+					heightArr.push(abox[i].offsetHeight)
+				}
+//				遍历后面所有的元素,准备设置定位
+				for(var i=maxNum;i<abox.length;i++){
+//					var min = Math.min.apply(null,heightArr);
+//					取数组中的最小值(拿到第一行最小的高度,准备把第二行的元素一次插入每次最小的高度)
+					var min = getMin(heightArr);
+					var minIndex = heightArr.indexOf(min)
+//					设置位置
+					abox[i].style.position = "absolute";
+					abox[i].style.top = min + "px";
+					abox[i].style.left = minIndex * abox[0].offsetWidth + "px";
+//					改变数组中原来最小值位置的数字
+					heightArr[minIndex] = heightArr[minIndex] + abox[i].offsetHeight;
+				}
+			}
+			
+			
+			function getMin(arr){
+				var myArr = []
+				arr.forEach(function(value){
+					myArr.push(value)
+				})
+				
+				var a = myArr.sort((a,b)=>a-b);
+				return a[0];
+			}
+			
+			
+		</script>
+	</head>
+	<body>
+		<div id="cont">
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/4.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/3.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/2.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/1.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/6.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/7.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/8.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/9.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/10.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/1.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/4.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/3.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/2.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/1.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/6.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/7.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/8.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/9.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/10.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/1.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/4.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/3.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/2.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/1.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/6.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/7.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/8.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/9.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/10.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/1.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/4.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/3.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/2.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/1.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/6.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/7.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/8.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/9.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/10.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/1.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/4.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/3.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/2.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/1.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/6.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/7.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/8.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/9.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/10.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/1.jpg"/>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="" name="" id="" value="" placeholder="请输入用户名" />
+		<input type="" name="" id="txt" value=""/>
+	</body>
+	<script type="text/javascript">
+		var otxt = document.getElementById("txt")
+		
+		var str = "请输入密码";
+		var c = "#ccc";
+		
+		otxt.value = str;
+		otxt.style.color = c;
+		
+		otxt.onfocus = function(){
+			if(this.value == str){
+				this.value = "";
+				otxt.style.color = "#000";
+			}
+		}
+		
+		otxt.onblur = function(){
+			if(this.value == ""){
+				this.value = str;
+				otxt.style.color = c;
+			}
+		}
+		
+	</script>
+</html>
