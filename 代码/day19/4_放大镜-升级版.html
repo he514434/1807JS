@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#s_box{width: 400px;height: 300px;position: absolute;left: 100px;top: 100px;}
+			#s_box img{width: 400px;height: 300px;}
+			#s_box span{position: absolute;left: 0;top: 0;width: 150px;height: 120px;background: url(img/1.jpg);display: none;background-size: 400px 300px;}
+			
+			#b_box{width: 400px;height: 300px;position: absolute;left: 600px;top: 100px;overflow: hidden;display: none;}
+			#b_box img{width: 1000px;position: absolute;}
+		</style>
+	</head>
+	<body>
+		<div id="s_box">
+			<img src="img/1.jpg"/>
+			<span></span>
+		</div>
+		<div id="b_box">
+			<img src="img/1.jpg"/>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var oSbox = document.getElementById("s_box");
+		var ospan = oSbox.children[1];
+		var oSimg = oSbox.children[0];
+		
+		var oBbox = document.getElementById("b_box");
+		var oBimg = oBbox.children[0];
+		
+		oSbox.onmouseover = function(){
+			ospan.style.display = "block";
+			oBbox.style.display = "block";
+			oSimg.style.opacity = "0.5"
+			
+			oSbox.onmousemove = function(eve){
+				var e = eve || window.event;
+				
+				var l = e.clientX - oSbox.offsetLeft - ospan.offsetWidth/2;
+				var t = e.clientY - oSbox.offsetTop - ospan.offsetHeight/2;
+//				边界限定
+				if(l<0) l=0;
+				if(t<0) t=0;
+				if(l > oSbox.offsetWidth - ospan.offsetWidth){
+					l = oSbox.offsetWidth - ospan.offsetWidth
+				}
+				if(t > oSbox.offsetHeight - ospan.offsetHeight){
+					t = oSbox.offsetHeight - ospan.offsetHeight
+				}
+//				计算span在小框中移动的比例
+				var biliX = l/(oSbox.offsetWidth - ospan.offsetWidth);
+				var biliY = t/(oSbox.offsetHeight - ospan.offsetHeight);
+//				根据比例,让右边的大图对应移动
+				oBimg.style.left = -biliX * (oBimg.offsetWidth-oBbox.offsetWidth) + "px";
+				oBimg.style.top = -biliY * (oBimg.offsetHeight-oBbox.offsetHeight) + "px";
+				
+//				设置span的背景图随着移动距离做反向移动
+				ospan.style.backgroundPosition = -l + "px " + -t +"px";
+				
+				ospan.style.left = l + "px"
+				ospan.style.top = t + "px"
+			}
+		}
+		
+		
+		oSbox.onmouseout = function(){
+			ospan.style.display = "none";
+			oBbox.style.display = "none";
+			oSimg.style.opacity = "1"
+		}
+		
+	</script>
+</html>
