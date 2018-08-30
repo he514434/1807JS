@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.cont{width: 1000px;overflow: hidden;margin: 20px auto;border: solid 1px black;}
+			.cont .box{width: 250px;border: solid 1px black;padding: 10px 0;text-align: center;box-sizing: border-box;float: left;}
+			.cont .box p{line-height: 20px;height: 40px;overflow: hidden;}
+			.cont .box em{display: block;width: 100px;line-height: 40px;text-align: center;background: dodgerblue;margin: 10px auto;}
+		</style>
+	</head>
+	<body>
+		<h2>这是商品列表<a href="car.html">去结算</a></h2>
+		<div class="cont"></div>
+	</body>
+	<script src="data/goods.js"></script>
+	<script src="../cookie.js"></script>
+	<script type="text/javascript">
+		var str = "";
+		for(var i=0;i<data.length;i++){
+			str += '<div class="box" liyang="'+ data[i].goodsId +'">'+
+						'<img src="'+ data[i].src +'"/>'+
+						'<p>'+ data[i].name +'</p>'+
+						'<span>'+ data[i].price +'</span>'+
+						'<em>加入购物车</em>'+
+					"</div>";
+		}
+//		console.log(str)
+		
+		var ocont = document.querySelector(".cont")
+		ocont.innerHTML = str;
+		
+//		点击em，因为页面上肯定不止一个em，页面初始没有em，怎么添加事件，所以，先找一个现有的父元素，添加事件，用委托的方式，找到将来的em
+		ocont.onclick = function(eve){
+			var e = eve ||window.event
+			var target = e.target || e.srcElement;
+			if(target.nodeName == "EM"){
+//				获取当前商品的唯一的货号
+				var goodsid = target.parentNode.getAttribute("liyang");
+//				存cookie
+				setCookie(goodsid,goodsid)
+				
+			}
+		}
+		
+//		存什么?货号，商品的编号，商品的二维码
+		
+		
+		
+		
+		
+		
+		
+		
+//		异步
+	</script>
+</html>
