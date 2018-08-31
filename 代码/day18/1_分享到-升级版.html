@@ -73,16 +73,16 @@
 	<script type="text/javascript">
 		var obox = document.getElementById("box");
 		var t = obox.offsetTop;
-		
+
 		var timer = null;
-		
+
 		obox.onmouseover = function(){
 			moveL(0)
 		}
 		obox.onmouseout = function(){
 			moveL(-200)
 		}
-		
+
 		onscroll = function(){
 			var scrollT = document.documentElement.scrollTop;
 //			计算滚动页面的时候,obox的实时目标：
@@ -90,36 +90,36 @@
 			var target = t + scrollT;
 			moveT(target);
 		}
-		
+
 		function moveL(target){
 			clearInterval(timer);
 			timer = setInterval(function(){
 				var speed = (target - obox.offsetLeft)/7;
 				speed = speed<0 ? Math.floor(speed) : Math.ceil(speed);
-				
+
 				if(target == obox.offsetLeft){
 					clearInterval(timer);
 				}else{
 					obox.style.left = obox.offsetLeft + speed + "px";
 				}
-				
+
 			},30)
 		}
-		
+
 		function moveT(target){
 			clearInterval(timer);
 			timer = setInterval(function(){
 				var speed = (target - obox.offsetTop)/7;
 				speed = speed<0 ? Math.floor(speed) : Math.ceil(speed);
-				
+
 				if(target == obox.offsetTop){
 					clearInterval(timer);
 				}else{
 					obox.style.top = obox.offsetTop + speed + "px";
 				}
-				
+
 			},30)
 		}
-		
+
 	</script>
 </html>
