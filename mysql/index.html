@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+
+<body>
+	<a href="show.html">查看现有数据</a><br /> 姓名：
+	<input type="text" id="user" value="" /><br /> 性别：
+	<input type="text" id="sex" value="" /><br /> 笔试：
+	<input type="text" id="pen" value="" /><br />
+	<input type="button" value="插入信息" id="btn" />
+</body>
+
+<script type="text/javascript">
+	var obtn = document.getElementById("btn")
+	var ouser = document.getElementById("user")
+	var osex = document.getElementById("sex")
+	var open = document.getElementById("pen")
+
+	obtn.onclick = function() {
+		var url = "http://localhost/1807JS/mysql/insert.php";
+		getAjax(url, function(res) {
+			if (res == 1) {
+				alert("插入成功");
+				location.href = "show.html";
+			} else {
+				alert("插入失败");
+			}
+			//				console.log(res)
+		}, {
+			user: ouser.value,
+			sex: osex.value,
+			pen: open.value
+		})
+
+	}
+
+	function getAjax(url, callback, data) {
+		var str = "";
+		for (var i in data) {
+			str += i + "=" + data[i] + "&";
+		}
+
+		var d = new Date();
+		url += "?" + str + "t=" + d.getTime();
+
+		var ajax = new XMLHttpRequest();
+		ajax.open("GET", url);
+		ajax.onreadystatechange = function() {
+			if (ajax.readyState == 4 && ajax.status == 200) {
+				callback(ajax.responseText);
+			}
+		}
+		ajax.send(null);
+	}
+</script>
+
+</html>
