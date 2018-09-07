@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+//		增
+//			document.cookie = "a=10";
+//			var d = new Date()
+//			d.setDate(d.getDate()+3);
+//			document.cookie = "b=20;expires="+d;
+//		删
+//			var d = new Date()
+//			d.setDate(d.getDate()-1);
+//			document.cookie = "a=10;expires="+d;
+//		改
+//			document.cookie = "a=30";
+//		查
+//			console.log(document.cookie)
+		
+		function setCookie(key,value,n){
+			if(n != undefined){
+				var d = new Date()
+				d.setDate(d.getDate()+n);
+				console.log(d)
+				document.cookie = key+"="+ value +";expires="+d;
+			}else{
+				document.cookie = key+"="+ value;
+			}
+		}
+		
+//		setCookie("name","admin",5)
+//		setCookie("age",18)
+//		setCookie("sex",1,0)
+//		setCookie("like","ball",1)
+//		setCookie("c","hahahah",30)
+//		
+//		setCookie("name","root",5)
+		
+		function removeCookie(key){
+			setCookie(key,"",-1)
+		}
+		
+//		removeCookie("b")
+		
+		function getCookie(key){
+//			获取所有cookie
+			var str = document.cookie;
+//			第一次分割成一对一对的,一维数组
+			arr = str.split("; ")
+//			遍历该数组,准备二次分割
+			for(var i=0;i<arr.length;i++){
+//				二次分割之后,可以直接进行判断
+				if(arr[i].split("=")[0] == key){
+//					如果二次分割的第一个数组与传参相等,那么相同位置的第二个数据就是要拿到的结果
+					return arr[i].split("=")[1];
+				}
+			}
+			return "";
+		}
+//		
+		
+		console.log(getCookie("user"));		//root
+	</script>
+</html>

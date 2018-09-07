@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="box1"></div>
+		<div id="box2"></div>
+	</body>
+	<script src="ajax.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		
+		var obox1 = document.getElementById("box1")
+		var obox2 = document.getElementById("box2")
+		
+		document.onclick = function(){
+			var url = "http://127.0.0.1/1807/ajax/data/data.php";
+			getAjax(url,function(res){
+//				res = JSON.parse(res);
+//				obox1.innerHTML = res.name;
+//				obox2.innerHTML = res.sex;
+				obox1.innerHTML = res;
+			})
+		}
+		
+//		cookie
+//		跨域：
+//			只要不同源,就是跨域
+//		同源策略:
+//			同协议:
+//				http
+//				https
+//			同域名:
+//				map.badu.com
+//				baike.baidu.com
+//			同端口号:
+//				www.baidu.com:8080
+//				www.baidu.com:8888
+//			同服务:
+//				localhost
+//				127.0.0.1
+		
+//		浏览器一厢情愿的认为,如果你请求的资源,没有特别声明说让你访问,那我就认为他不让你访问
+		
+	</script>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		
+		
+		document.onclick = function(){
+			var url = "http://localhost/1807/ajax/data/data.txt";
+			
+			getAjax(url,function(res){
+				console.log(res);
+			});
+		}
+		
+		function getAjax(url,callback){
+			
+			var d = new Date();
+			url = url + "?t=" + d.getTime()
+			
+			var ajax = new XMLHttpRequest();
+			ajax.open("GET",url)
+			ajax.onreadystatechange = function(){
+				if(ajax.readyState == 4 && ajax.status == 200){
+					callback(ajax.responseText)
+				}
+			}
+			ajax.send(null);
+		}
+		
+	</script>
+</html>
