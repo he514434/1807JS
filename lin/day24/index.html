@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+		<style type="text/css">
+			html,
+			body {
+				height: 100%;
+			}
+			
+			html {
+				position: relative;
+			}
+			
+			.con {
+				font: 800 24px/50px "";
+				color: #666;
+			}
+			
+			.box {
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				background: rgba(255, 255, 255, 0);
+				top: 0;
+				display: none;
+			}
+			
+			.show {
+				height: 400px;
+				padding: 10px;
+				clear: both;
+				position: fixed;
+				left: 0;
+				right: 0;
+				top: 0;
+				bottom: 0;
+				display: none;
+			}
+			
+			.show input {
+				height: 50px;
+			}
+			
+			table {
+				font-weight: 100;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="con clearfix">
+			<img src="img/捕获.PNG" class="float-left mx-4 my-2" />
+			<span class="float-left font-weight-bold my-3">易错内容</span>
+			<span class="float-left  my-4 mx-3 rounded btn-sm btn btn-info">*添加错题</span>
+		</div>
+		<table class="table mx-auto table-striped thead-inverse table-hover">
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>易错内容</th>
+					<th>错在哪里</th>
+					<th>你的想法</th>
+					<th>删除</th>
+					<th>操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<!--<tr>
+					<td>Data</td>
+					<td>Data</td>
+					<td>Data</td>
+					<td>Data</td>
+					<td>Data</td>
+					<td>Data</td>
+				</tr>-->
+				<!--<tr>
+					<td>Data</td>
+					<td>Data</td>
+					<td>Data</td>
+					<td>Data</td>
+					<td>Data</td>
+					<td>Data</td>
+				</tr>-->
+			</tbody>
+		</table>
+
+		<div class="box">
+
+			<div class="show border w-50 mx-auto my-auto bg-light">
+				易错内容：<br />
+				<input type="text" id="txt1" name="content" class="w-100 my-3 " /><br /> 错在哪：
+				<br />
+				<input type="text" id="txt2" name="where" class="w-100 my-3" /><br /> 你的想法：
+				<br />
+				<input type="text" id="txt3" name="want" class="w-100 my-3 " /><br />
+				<input type="button" id="btn1" class="btn btn-info float-right" value="CANCEL" />
+				<input type="button" id="btn2" class="btn btn-info mx-3 float-right" value="INSERT" />
+			</div>
+
+		</div>
+		<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		<script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	</body>
+
+</html>
+<script src="getAjax.js"></script>
+<script type="text/javascript">
+	onload = function() {
+
+		var otbody = document.querySelector("tbody");
+
+		var url = "http://localhost/two/day24/php/select.php";
+		getAjax(url).then(function(res) {
+			//			console.log(res);
+			res = JSON.parse(res);
+			//			console.log(res);
+			var str = "";
+			for(var i = 0; i < res.length; i++) {
+				str += `<tr>
+					  		<td>${res[i].id}</td>
+							<td>${res[i].content}</td>
+							<td>${res[i].where}</td>
+							<td>${res[i].want}</td>
+							<td><b>删除</b></td>
+					  		<td><span>修改</span></td>
+					    </tr>`
+			}
+			otbody.innerHTML = str;
+		})
+
+		var ospan = document.querySelector(".con").lastElementChild;
+		var obox = document.querySelector(".box");
+		var oshow = document.querySelector(".show");
+		var oCancel = document.querySelector("#btn1");
+		var oInsert = document.querySelector("#btn2");
+
+		var otxt1 = document.querySelector("#txt1");
+		var otxt2 = document.querySelector("#txt2");
+		var otxt3 = document.querySelector("#txt3");
+
+		//		console.log(otxt1,otxt2,otxt3)
+		ospan.onclick = function() {
+			obox.style.display = "block";
+			oshow.style.display = "block";
+			oInsert.onclick = function() {
+				//				console.log(1);
+				var url = "http://localhost/two/day24/php/insert.php";
+				getAjax(url, {
+					content: otxt1.value,
+					where: otxt2.value,
+					want: otxt3.value
+				}).then(function(res) {
+					console.log(res);
+				})
+			}
+
+			oCancel.onclick = function() {
+				obox.style.display = "none";
+				oshow.style.display = "none";
+			}
+
+		}
+
+		otbody.onclick = function(eve) {
+			var e = eve || window.event;
+			var target = e.target || e.srcElement;
+			if(target.nodeName == "SPAN") {
+				obox.style.display = "block";
+				oshow.style.display = "block";
+			}
+
+			if(target.nodeName == "B") {
+				var id = target.parentNode.parentNode.firstElementChild.innerHTML;
+				var url = "http://localhost/two/day24/php/delete.php";
+				getAjax(url, {
+					id: id
+				}).then(function(res) {
+					if(res == 0) {
+						console.log("删除失败");
+					} else {
+						target.parentNode.parentNode.remove();
+						console.log("删除成功");
+					}
+				})
+			}
+
+			oCancel.onclick = function() {
+				obox.style.display = "none";
+				oshow.style.display = "none";
+			}
+
+		}
+
+	}
+</script>

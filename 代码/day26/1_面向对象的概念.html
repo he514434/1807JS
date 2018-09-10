@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+//		面向对象编程
+//		面向
+//		对象:var obj = {
+//			name:"admin"
+//		}
+//		obj.show = function(){
+//			console.log(this.name)
+//		}
+//		编程
+		
+		
+//		面向过程编程
+//		只考虑功能实现的过程,边写边实现功能边调用
+		
+//		函数:
+//		
+//		
+//		抽象
+//		封装
+//		选择执行
+//		重复调用
+//		继承
+		
+//		如何做面向对象
+		
+//		OO:面向对象				做一顿大餐
+//		
+//		OOA:面向对象分析			要做什么菜,用到哪些材料
+//		
+//		OOD:面向对象设计			列出来清单之后,根据清单去购买
+//		
+//		OOP:面向对象的编程			回家做饭
+		
+		
+//		OOA:
+//		人类起源：
+//			单细胞,多细胞,人
+//			分工协作
+//			人类统治了世界:
+//				精密分工协作
+//			
+//			考研失败:
+//				总结失败原因
+//					高数:
+//						三角函数
+//					英语:
+//						作文
+//			把大目标拆成小目标,实现了所有小目标,大目标也实现了
+			
+//		老板分配任务：
+//			电商:销量,淘宝,京东
+//			老板:
+//				部门主管:
+//					组长:
+//						员工
+			
+//			老板:
+//				员工ABCDEF
+//				员工ABCDEF
+			
+//		OOD:
+//		公司招人
+//			秘书，负责领导的日常
+//			一个月,上岗
+			
+//			老板和秘书的关系,低
+//			低耦合
+			
+//			忠诚度,高
+//			高内聚
+			
+			人 = {
+				sex:1,
+				age:17,
+				skill:"jsadjsakdsalk",
+				特点:"askjdhasdk"
+			}
+			
+			销售 = {
+				销售:人,
+				skill1:"能说"
+				skill2:"专业的产品介绍"
+				skill3:"厚脸皮"
+			}
+			
+			讲师 = {
+				讲师:人,
+				skill1:"专业技术",
+				skill2:"能说"
+			}
+			
+//			育人
+			销售招生
+			讲师培训
+			
+			
+			
+//			继承
+		
+//		OOP:编程
+//			开始写代码干活
+//			面向过程的代码
+		
+		
+		
+//		轮播图
+//		分析：把大目标拆成小目标
+			1.获取元素,绑定事件
+			2.改变要显示图片索引
+			3.根据索引移动图片
+//		设计：做耦合和内聚（做功能之间的调用关系）
+			function init(){
+				
+					changeindex()
+				
+			}
+			function changeindex(){
+				
+				imgMove()
+			}
+			function imgMove(){
+				
+			}
+//		编程：填充功能
+			function init(){
+				var onext = document.getElementById("next")
+				onext.onclick = function(){
+					changeindex()
+				}
+			}
+			function changeindex(){
+				if(index==img.length-1){
+					index=0
+				}else{
+					index++
+				}
+				imgMove()
+			}
+			function imgMove(){
+				img[index].show()
+			}
+		
+		
+	</script>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+//		对象
+//		1.创建对象
+//		var obj = {};
+//		var obj2 = new Object();
+		
+//		原料
+//		加工
+//		出厂		对象
+		
+//		设计模式:工厂模式
+//		function people(n,l){
+//			var obj = {}		//原料
+//			
+//			obj.name = n;		//加工
+//			obj.like = l;
+//			obj.show = function(){
+//				console.log(this.name + "-------" + this.like)
+//			}
+//			
+//			return obj;			//出厂
+//		}
+//		var a = people("zhangsan","qiu");
+//		a.show()
+//		var b = people("lisi","qi");
+//		b.show()
+//		
+//		console.log(a == b)
+		
+//		js自带了一种新的工厂模式：构造函数
+//		原料
+//		加工
+//		出厂
+		
+//		构造函数
+//		function Fn(n,l){		//原料
+////			Fn.name = "admin"
+////			name = "admin"
+//			this.name = n		//加工
+//			this.like = l
+//		}
+		
+//		var a = Fn()
+//		console.log(a)
+
+//		var b = new Fn("zhangsan","qiu")		//出厂
+//		console.log(b)
+////		
+//		var c = new Fn("lisi","qi")
+//		console.log(c)
+//		
+//		console.log(b == c)
+		
+//		如果自定义的函数,是用来被new调用的,那么首字母要大写
+//		任何时候,只要通过new调用函数,不管原函数有没有返回值,都会得到一个函数同名对象的返回值
+
+//		在原料的函数内,通过this给将来new出来的对象添加属性
+//			这是一种预使用方式
+		
+//		function People(n,s){
+//			this.name = n
+//			this.skill = s
+//		}
+//		
+//		var a = new People("zhangsan","qiu")
+//		console.log(a)
+		
+	</script>
+</html>

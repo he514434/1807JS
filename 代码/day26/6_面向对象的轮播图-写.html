@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.cont{width: 1130px;height: 300px;margin: 20px auto;position: relative;}
+			.imgbox{position: absolute;left: 0;top: 0;}
+			.imgbox a{float: left;width: 1130px;height: 300px;}
+			
+			.imgbox a img{width: 1130px;height: 300px;}
+			input{width: 50px;height: 50px;border: none;background: rgba(200,200,200,0.6);position: absolute;top: 125px;z-index: 9999999;}
+			#prev{left: 0;}
+			#next{right: 0;}
+		</style>
+	</head>
+	<body>
+		<div class="cont">
+			<div class="imgbox">
+				<a href=""><img src="https://img.zcool.cn/community/01c4005b863607a80120245cc788a1.jpg@1380w"/></a>
+				<a href=""><img src="https://img.zcool.cn/community/01eb7b5b85ff52a80120245c031a6b.jpg@1380w"/></a>
+				<a href=""><img src="https://img.zcool.cn/community/01327f5b8422c7a80120577d2aa796.png@1380w"/></a>
+				<a href=""><img src="https://img.zcool.cn/community/0174f85b8422f2a8012190f2b97fa9.png@1380w"/></a>
+				<a href=""><img src="https://img.zcool.cn/community/01c4005b863607a80120245cc788a1.jpg@1380w"/></a>
+			</div>
+			<input type="button" name="" id="prev" value="<<<" />
+			<input type="button" name="" id="next" value=">>>" />
+		</div>
+	</body>
+	<script src="../move.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+//		OOA:
+//			1.选元素,绑定事件
+//			2.改变索引
+//			3.根据索引显示图片
+
+//		OOD:
+//			function Banner(){
+////				选元素,存属性
+//
+//				this.init()
+//			}
+//			Banner.prototype.init = function(){
+////				绑定事件
+//					this.changeIndex()
+//			}
+//			Banner.prototype.changeIndex = function(){
+////				改变索引
+//					this.move()
+//			}
+//			Banner.prototype.move = function(){
+////				根据索引显示图片
+//			}
+		
+//		OOP
+			
+			function Banner(){
+//				选元素,存属性
+				this.left = document.getElementById("prev");
+				this.right = document.getElementById("next");
+				this.imgbox = document.querySelector(".imgbox");
+				this.img = this.imgbox.children;
+				
+				this.index = 0;
+
+				this.init()
+			}
+			Banner.prototype.init = function(){
+				this.imgbox.style.width = this.img.length * this.img[0].offsetWidth + "px";
+//				绑定事件
+				var that = this;
+				this.left.onclick = function(){
+					that.changeIndex("left")
+				}
+				this.right.onclick = function(){
+					that.changeIndex("right")
+				}
+			}
+			Banner.prototype.changeIndex = function(direct){
+//				改变索引
+				if(direct == "left"){
+					if(this.index == 0){
+						this.index = this.img.length-2;
+						this.imgbox.style.left = -(this.img.length-1)*this.img[0].offsetWidth + "px";
+					}else{
+						this.index--
+					}
+				}else{
+					if(this.index == this.img.length-1){
+						this.index = 1;
+						this.imgbox.style.left = 0;
+					}else{
+						this.index++
+					}
+				}
+				this.move()
+			}
+			Banner.prototype.move = function(){
+//				根据索引显示图片
+				move(this.imgbox,{"left":-this.img[0].offsetWidth * this.index})
+			}
+			
+			new Banner()
+			
+	</script>
+</html>
