@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		function Map(){
+			this.w = 800;
+			this.h = 400;
+			
+			this.display()
+		}
+		Map.prototype.display = function(){
+			this.ele = document.createElement("div")
+			this.ele.style.width = this.w + "px";
+			this.ele.style.height = this.h + "px";
+			this.ele.style.background = "#ccc";
+			this.ele.style.margin = "10px auto";
+			this.ele.style.position = "relative";
+			document.body.appendChild(this.ele);
+		}
+		
+		function Food(){
+			this.w = 20;
+			this.h = 20;
+			
+			this.x = 0;
+			this.y = 0;
+			
+//			this.display()
+		}
+		Food.prototype.display = function(){
+			if(!this.ele){
+				this.ele = document.createElement("div");
+				this.ele.style.width = this.w + "px";
+				this.ele.style.height = this.h + "px";
+				this.ele.style.background = "red";
+				this.ele.style.position = "absolute";
+			}
+			
+			this.x = random(0,map.w/this.w-1);
+			this.y = random(0,map.h/this.h-1);
+			
+			this.ele.style.left = this.x * this.w + "px";
+			this.ele.style.top = this.y * this.h + "px";
+			map.ele.appendChild(this.ele)
+		}
+		
+		function Snake(){
+			
+			this.w = 20;
+			this.h = 20;
+			
+			this.body = [[4,3,"green"],[3,3,"yellow"],[2,3,"yellow"]]
+			
+			this.direct = "right";
+			
+			this.display()
+		}
+		Snake.prototype.display = function(){
+			for(var i=0;i<this.body.length;i++){
+				if(!this.body[i][3]){
+					this.body[i][3] = document.createElement("div")
+					this.body[i][3].style.width = this.w + "px";
+					this.body[i][3].style.height = this.h + "px";
+					this.body[i][3].style.position = "absolute";
+				}
+				this.body[i][3].style.left = this.body[i][0] * this.w + "px";
+				this.body[i][3].style.top = this.body[i][1] * this.h + "px";
+				this.body[i][3].style.background = this.body[i][2];
+				map.ele.appendChild(this.body[i][3]);
+			}
+//			作业:积分
+			this.body[0][3].innerHTML = "0";
+			
+			setTimeout(()=>{
+				this.move();
+			},300)
+		}
+		Snake.prototype.move = function(){
+			for(var i=this.body.length-1;i>0;i--){
+				this.body[i][0] = this.body[i-1][0];
+				this.body[i][1] = this.body[i-1][1];
+			}
+//			this.body[0][0] += 1;
+
+			switch(this.direct){
+				case "left":this.body[0][0] -= 1;break;
+				case "right":this.body[0][0] += 1;break;
+				case "top":this.body[0][1] -= 1;break;
+				case "bottom":this.body[0][1] += 1;break;
+			}
+			
+			this.display();
+		}
+		Snake.prototype.direction = function(value){
+			switch(value){
+				case 37:this.direct = "left";break;
+				case 38:this.direct = "top";break;
+				case 39:this.direct = "right";break;
+				case 40:this.direct = "bottom";break;
+			}
+		}
+		
+		
+		
+		
+		
+		
+		function random(a,b){
+			return Math.round(Math.random()*(a-b)+b)
+		}
+		
+		
+		var map = new Map()
+		var food = new Food()
+		var snake = new Snake();
+		
+		setInterval(()=>{
+			food.display()
+			console.log(food.x,food.y)
+		},500)
+		
+		document.onkeydown = function(eve){
+			var e = eve || window.event;
+			var code = e.keyCode || e.which;
+			snake.direction(code)
+		}
+		
+	</script>
+</html>
