@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="dahuiji.css" />
+
+	<script>
+	window.onload = function(){
+		//游戏引擎
+		new Engine()
+
+	}
+	function Engine(){
+		this.ele = document.getElementById('body_main');
+		this.options = document.getElementById('options').children;
+		this.click();
+	}
+	Engine.prototype.click = function(){
+		var _this = this;
+		for(var i = 0 ; i < this.options.length; i++){
+			this.options[i].index = i;
+			this.options[i].onclick = function(){
+				//飞机频率
+				switch(this.index){
+					//频率 frequency
+					case 0 : _this.frequency = 600;; break;
+					case 1 : _this.frequency = 400; break;
+					case 2 : _this.frequency = 200; break;
+					case 3 : _this.frequency = 50; break;
+				}
+				_this.init()
+				this.parentNode.style.display = 'none';
+			}
+		}
+	}
+	var logo = {
+		ele: document.createElement("div"),
+		show : function(){
+			this.ele.className = 'logo';
+			document.body.appendChild(this.ele)
+		},
+		hide : function(){
+			this.ele.style.display = 'none';
+		}
+	}
+	Engine.prototype.init = function(){
+		logo.show();
+		return this;
+	}
+	
+
+	
+
+	</script>
+
+</head>
+<body>
+	<div id="body_main" class="main">
+			<ul id="options" class="options">
+				<li value="1">超级困难</li>
+				<li value="2">非常困难</li>
+				<li value="3">比较困难</li>
+				<li value="4">就选我吧</li>
+			</ul>
+	</div>
+</body>
+</html>
