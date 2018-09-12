@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		
+//		打电话：ajax的请求过程
+//		找到手机：创建ajax对象
+		var ajax = new XMLHttpRequest();
+		
+//		拨号：输入url
+		ajax.open("GET","http://localhost/1807/ajax/data/data.txt")
+
+//		监视手机的状态，根据状态做处理：判断ajax的状态
+		ajax.onreadystatechange = function(){
+			if(ajax.readyState == 4 && ajax.status == 200){
+				console.log(ajax.responseText)
+			}
+		}
+
+//		歪：发数据
+		ajax.send(null)
+		
+	</script>
+</html>

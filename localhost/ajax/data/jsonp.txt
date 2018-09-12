@@ -1,0 +1,8 @@
+//hello
+
+//function fn(){
+//	console.log("hello txt");
+//}
+
+fn("你好js，我是记事本传进来的数据")
+

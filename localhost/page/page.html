@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin: 0 ; 
+        padding: 0;
+        list-style-type: none;
+    }
+    .pagWarp{
+        height: 40px;
+        box-shadow: 0 2px 5px #b6b6b6;
+        position: absolute;
+        border-radius: 2px;
+        right: 42%;
+        top: 430px;
+    }
+    #btnL,#btnR{
+        line-height: 40px;
+        cursor: pointer;
+    }
+    #btnL{
+        float: left;
+    }
+    #btnR{
+        float: right;             
+    }
+    .pagWarp ul{        
+        height: 40px;
+        margin: 0 auto;
+        float: left;
+        text-align: center;
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+    .pagWarp ul li{
+        float: left;
+        text-align: center;
+        line-height: 40px;
+        padding: 0 4px;
+    }
+    .active{
+        color: blue;
+        font-size: 30px;
+    }
+
+    /* 商品列表样式 */
+.list{
+    width: 80%;
+    margin: 20px auto;
+}
+.list:after{
+    content:'';
+    display: block;
+    clear: both;
+}
+.list li{
+    padding:2%;
+    width: 15%;
+    float: left;
+    height: 300px;
+    color: #666;
+    border-right: 1px solid #b6b6b6;
+      box-shadow: 2px 2px 5px #b6b6b6;  
+      margin-left: 8px;
+      margin-top: 20px;
+}
+.list li h2{
+    font-size: 18px;
+    text-align: center;
+    line-height: 30px;
+}
+.list .img{
+    width: 100%;
+    border: 1px solid #b6b6b6;
+    height: 180px;
+}
+.list input[type=button]{
+    display: block;
+    margin: 0 auto;
+    border: 1px solid #b6b6b6;
+    width: 100px;
+    height: 80px;
+}
+</style>
+<body>
+    <ul class="list" id="list">
+       
+    </ul>
+    <div class="pagWarp" id="pageWarp">
+        <span id="btnL">上一页</span>
+        <ul id="page">
+        </ul>
+        <span id="btnR">下一页</span>
+    </div>
+</body>
+<script src="../ajax.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+//	分页
+//		请求数据
+//		渲染页面
+//		点击事件，改变索引（页码）
+//		渲染页面
+	
+//	1.构造函数
+	function Page(options){
+//		准备存属性
+//		3.传url
+		this.url = options.url;
+//		6.传大框
+		this.list = options.list;
+//		9.传一页显示的数据数
+		this.num = options.num;
+//		12.传页码的框
+		this.pageCont = options.pageCont;
+//		15.传左右按钮的标签
+		this.left = options.left;
+		this.right = options.right;
+//		17.创建索引
+		this.index = 0;
+//		2.请求数据
+		this.load()
+	}
+	Page.prototype.load = function(){
+		var that = this;
+		getAjax(this.url).then(function(res){
+//			4.保存到当前对象身上
+			that.res = JSON.parse(res)
+//			5.渲染页面
+			that.display()
+//			8.创建页码
+			that.createPage()
+		})
+	}
+	Page.prototype.display = function(){
+		var str = ""
+		
+//		this.num * this.index ~ this.num * (this.index+1)
+//		this.num * this.index ~ this.num * (this.index+1)
+//		this.num * this.index ~ this.num * (this.index+1)
+
+//		20.决定每次点击换页的时候,数据如何切割
+		for(var i=this.num*this.index;i<this.num*(this.index+1);i++){
+//			21.判断当前的范围不能超过数据的总长度
+			if(i<this.res.length){
+				str += `<li>
+					        <img src="${this.res[i].url}" alt="" class="img">        
+					        <h2>商品名称:<span>${this.res[i].name}</span></h2>
+					        <h2>商品介绍:<span>${this.res[i].tip}</span></h2>
+					        <h2>商品价格:<span>${this.res[i].price}</span></h2>
+				        </li>`
+			}
+		}
+//		7.塞数据
+		this.list.innerHTML = str;
+	}
+	Page.prototype.createPage = function(){
+//		10.根据数据计算页码
+		this.maxNum = Math.ceil(this.res.length / this.num);
+		var str = ""
+//		11.拼接页码的结构
+		for(var i=0;i<this.maxNum;i++){
+			str += `<li>${i+1}</li>`
+		}
+//		13.把页码的结构塞到框内
+		this.pageCont.innerHTML = str;
+		this.pageCont.children[0].className = "active";
+//		14.准备绑定事件
+		this.init()
+	}
+	Page.prototype.init = function(){
+		var that = this;
+		this.left.onclick = function(){
+//			16-1.触发事件的时候,改变index
+			if(that.index == 0){
+				that.index = that.pageCont.children.length-1
+			}else{
+				that.index--
+			}
+//			18-1.根据当前页码改变当前项
+			that.changeActive()
+//			22-1.点击切换页码之后,重新渲染页面
+			that.display()
+		}
+		this.right.onclick = function(){
+//			16-2.触发事件的时候,改变index
+			if(that.index == that.pageCont.children.length-1){
+				that.index = 0;
+			}else{
+				that.index++
+			}
+//			18-2.根据当前页码改变当前项
+			that.changeActive()
+//			22-2.点击切换页码之后,重新渲染页面
+			that.display()
+		}
+	}
+	Page.prototype.changeActive = function(){
+//		19.渲染当前项
+		for(var i=0;i<this.pageCont.children.length;i++){
+			this.pageCont.children[i].className = ""
+		}
+		this.pageCont.children[this.index].className = "active"
+	}
+	
+	
+	
+	new Page({
+		url:"http://localhost/1807/page/goods.json",
+		list:document.getElementById("list"),
+		num:5,
+		pageCont:document.getElementById("page"),
+		left:document.getElementById("btnL"),
+		right:document.getElementById("btnR"),
+	})
+	
+</script>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		
+//		var p = new Promise(function(a,b){
+//			a()
+//			b()
+//		});
+//		
+//		p.then(function(){
+//			console.log(1)
+//		},function(){
+//			console.log(2)
+//		});
+		
+		
+//		promise
+
+//		承诺:
+//		明年结婚					将来时
+//			今年到明年的过程		正在进行时.....
+//
+//			到时间结婚了			承诺成功
+//			到时间没结婚			承诺失败
+//		
+//		我打电话向朋友借钱		将来时
+//			打电话				正在进行时.....
+//			
+//			借到了				成功
+//			没借到				失败
+//			
+//		要向某个地址,请求数据		将来时
+//			ajax的执行过程		正在进行时.....
+//			
+//			请求成功拿到数据		成功
+//			请求失败没拿到数据	失败
+		
+		
+//		var p = new Promise(function(a,b){
+//			var timer = setInterval(()=>{
+////				正在进行时.....
+//				console.log("正在进行时");
+//				
+//				if(Math.random() < 0.5){
+//					a()
+//					clearInterval(timer)
+//				}else{
+//					b()
+//					clearInterval(timer)
+//				}
+//				
+//			},1000)
+//		});
+//		
+//		p.then(function(){
+//			console.log("成功")
+//		},function(){
+//			console.log("失败")
+//		});
+
+
+//		function getAjax(url,data){
+//			var p = new Promise(function(a,b){
+//				var str = ""
+//				for(var i in data){
+//					str = str + i + "=" + data[i] + "&";
+//				}
+//				var d = new Date();
+//				url = url + "?" + str + "_t=" + d.getTime();
+//				var ajax = new XMLHttpRequest();
+//				ajax.open("GET",url)
+//				ajax.onreadystatechange = function(){
+//					if(ajax.readyState == 4 && ajax.status == 200){
+//						a(ajax.responseText)
+//					}else if(ajax.readyState == 4 && ajax.status != 200){
+//						b(ajax.status)
+//					}
+//				}
+//				ajax.send(null);
+//			})
+//			return p;
+//		}
+//
+//		var p = getAjax(url,{})
+//		
+//		p.then(function(res){
+//			console.log(res)
+//		},function(status){
+//			console.log(status)
+//		})
+		
+		
+		
+		
+//		function fn(a){
+//			a(function(c){
+//				c(function(I){
+//				
+//				})
+//				
+//			})
+//		}
+//		fn(function(b){
+//			b(function(d){
+//			
+//			})
+//		})
+	</script>
+</html>

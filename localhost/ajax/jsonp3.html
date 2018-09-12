@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		
+		
+		
+		
+		document.onclick = function(){
+			var url = "http://localhost/1807/ajax/data/jsonp-data.php";
+			jsonp(url,function(res){
+				console.log("请求成功")
+				console.log(res)
+			},{
+				_fnName:"liyang",
+				liyang:"lksadasaidhsaidhasd",
+				user:"admin",
+				pass:12345
+			})
+		}
+		
+		
+		
+		function jsonp(url,callback,data){
+			
+			var str = ""
+			for(var i in data){
+				str = str + i + "=" + data[i] + "&";
+			}
+			url = url + "?" + str.slice(0,str.length-1);
+			
+			var script = document.createElement("script")
+			script.src = url;
+			document.body.appendChild(script)
+			
+//			data._fnName				cb
+//			data[data._fnName]			data.cb		abc
+//			window[data[data._fnName]]	window.abc
+
+			window[data[data._fnName]] = function(res){
+				callback(res)
+			}
+		}
+		
+		
+		
+		
+	</script>
+</html>

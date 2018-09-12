@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		用户名：<input type="text" name="" id="txt1" value="" /><br />
+		密码：<input type="text" name="" id="txt2" value="" /><br />
+		<input type="button" name="" id="btn" value="七天免登陆" />
+	</body>
+	<script src="../cookie.js"></script>
+	<script type="text/javascript">
+		var otxt1 = document.getElementById("txt1")
+		var otxt2 = document.getElementById("txt2")
+		var obtn = document.getElementById("btn")
+		
+//		console.log(getCookie("user") + "world")
+		otxt1.value = getCookie("user")
+		otxt2.value = getCookie("pass")
+		
+		
+		
+		obtn.onclick = function(){
+			setCookie("user",otxt1.value,7)
+			setCookie("pass",otxt2.value,7)
+		}
+		
+	</script>
+</html>

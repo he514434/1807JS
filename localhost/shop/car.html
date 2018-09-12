@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			
+			img{width: 100px;}
+			em{display: block;width: 100px;line-height: 40px;text-align: center;background: dodgerblue;margin: 10px auto;}
+			
+		</style>
+	</head>
+	<body>
+		<h2>这是购物车<a href="list.html">继续购物</a></h2>
+		<table border="1" cellspacing="0" width="900" align="center">
+			<thead>
+				<th>图片</th>
+				<th>名字</th>
+				<th>价格</th>
+				<th>操作</th>
+			</thead>
+			<tbody>
+				<!--<tr>
+					<td>Data</td>
+					<td>Data</td>
+					<td>Data</td>
+					<td><em>删除</em></td>
+				</tr>-->
+			</tbody>
+		</table>
+	</body>
+	<script src="data/goods.js"></script>
+	<script src="../cookie.js"></script>
+	<script type="text/javascript">
+//		因为此处设置的cookie格式特殊,名字和值相等,有因为要取出所有的cookie
+		var str = document.cookie;
+		var arr = str.split("; ")
+		var innerStr = ""
+//		遍历所有cookie
+		for(var i=0;i<arr.length;i++){
+//			遍历所有总数据
+			for(var j=0;j<data.length;j++){
+//				将cookie中的货号和总数据中的货号,比较,相符,该数据就是当前购物车中的商品
+				if(arr[i].split("=")[0] == data[j].goodsId){
+//					生成页面的字符串
+					innerStr += "<tr liyang='"+ data[j].goodsId +"'>"+
+									"<td><img src='"+ data[j].src +"'></td>"+
+									"<td>"+ data[j].name +"</td>"+
+									"<td>"+ data[j].price +"</td>"+
+									"<td><em>删除</em></td>"+
+								"</tr>";
+				}
+			}
+		}
+		
+//		把字符串塞到大框中显示
+		var otbody = document.querySelector("tbody")
+		otbody.innerHTML = innerStr;
+		
+//		利用事件委托给em绑定删除事件
+		otbody.addEventListener("click",function(eve){
+			var e = eve || window.event
+			var target = e.target || e.srcElement;
+			if(target.nodeName == "EM"){
+//				不仅要删除DOM元素,还要删除cookie,删除之前得先获取当前商品的货号
+				var liyang = target.parentNode.parentNode.getAttribute("liyang");
+//				删除DOM
+				target.parentNode.parentNode.remove();
+//				删除cookie
+				removeCookie(liyang)
+			}
+		},false)
+		
+		
+//		操作cookie,必须在服务器环境
+//		服务器中的文件名,不能有中文
+//		服务器中的文件预览要在浏览器中拼接地址,不能直接通过编辑器打开
+//		服务器根目录的概念,路径的书写
+		
+	</script>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		用户名：<input type="text" id="user" value="" /><br />
+		密码：<input type="text" id="pass" value="" /><br />
+		<input type="button" id="btn" value="登录" /><br />
+		<span></span>
+		
+	</body>
+	
+	<script src="ajax.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		var ouser = document.getElementById("user")
+		var opass = document.getElementById("pass")
+		var obtn = document.getElementById("btn")
+		var ospan = document.querySelector("span")
+		
+		obtn.onclick = function(){
+			
+			getAjax("http://localhost/1807/ajax/data/login.php",function(res){
+				if(res == 0){
+					ospan.innerHTML = "登录失败";
+				}else{
+					ospan.innerHTML = "登录成功;3秒后跳转到某某某页面";
+					
+					setTimeout(function(){
+						location.href = "http://www.baidu.com"
+					},3000)
+					
+				}
+			},{
+				user:ouser.value,
+				pass:opass.value
+			})
+			
+		}
+		
+	</script>
+	
+</html>

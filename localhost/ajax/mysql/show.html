@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<a href="index.html">继续添加信息</a>
+		<table border="1" cellspacing="0" width="700" align="center">
+			<thead>
+				<tr>
+					<th>学号</th>
+					<th>姓名</th>
+					<th>性别</th>
+					<th>机试</th>
+					<th>笔试</th>
+					<th>操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				
+			</tbody>
+		</table>
+	</body>
+	<script src="../ajax.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		
+		var otbody = document.querySelector("tbody")
+		
+		var url = "http://localhost/1807/ajax/mysql/show.php";
+		getAjax(url,function(res){
+			if(res == 0){
+				alert("读取数据失败，有可能是服务器出错，跟你没关系，请稍候再访问");
+			}else{
+				res = JSON.parse(res);
+				var str = ""
+				for(var i=0;i<res.length;i++){
+					str += `<tr>
+								<td>${res[i].id}</td>
+								<td>${res[i].name}</td>
+								<td>${res[i].sex}</td>
+								<td>${res[i].cmp}</td>
+								<td>${res[i].pen}</td>
+								<td><span>删除</span></td>
+							</tr>`;
+				}
+				otbody.innerHTML = str;
+			}
+		},{akjdsak:"kehao;c"})
+		
+		
+		otbody.onclick = function(eve){
+			var e = eve || window.event;
+			var target = e.target || e.srcElement;
+			if(target.nodeName == "SPAN"){
+				var id = target.parentNode.parentNode.firstElementChild.innerHTML;
+				
+				var url = "http://localhost/1807/ajax/mysql/delete.php";
+				getAjax(url,function(res){
+					if(res == 0){
+						alert("失败");
+					}else{
+						target.parentNode.parentNode.remove();
+						alert("成功");
+					}
+				},{
+					id:id
+				})
+			}
+		}
+		
+	</script>
+</html>
