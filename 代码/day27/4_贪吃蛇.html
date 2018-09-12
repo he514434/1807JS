@@ -10,7 +10,7 @@
 		function Map(){
 			this.w = 800;
 			this.h = 400;
-			
+
 			this.display()
 		}
 		Map.prototype.display = function(){
@@ -22,14 +22,14 @@
 			this.ele.style.position = "relative";
 			document.body.appendChild(this.ele);
 		}
-		
+
 		function Food(){
 			this.w = 20;
 			this.h = 20;
-			
+
 			this.x = 0;
 			this.y = 0;
-			
+
 //			this.display()
 		}
 		Food.prototype.display = function(){
@@ -40,24 +40,24 @@
 				this.ele.style.background = "red";
 				this.ele.style.position = "absolute";
 			}
-			
+
 			this.x = random(0,map.w/this.w-1);
 			this.y = random(0,map.h/this.h-1);
-			
+
 			this.ele.style.left = this.x * this.w + "px";
 			this.ele.style.top = this.y * this.h + "px";
 			map.ele.appendChild(this.ele)
 		}
-		
+
 		function Snake(){
-			
+
 			this.w = 20;
 			this.h = 20;
-			
+
 			this.body = [[4,3,"green"],[3,3,"yellow"],[2,3,"yellow"]]
-			
+
 			this.direct = "right";
-			
+
 			this.display()
 		}
 		Snake.prototype.display = function(){
@@ -75,7 +75,7 @@
 			}
 //			作业:积分
 			this.body[0][3].innerHTML = "0";
-			
+
 			setTimeout(()=>{
 				this.move();
 			},300)
@@ -93,7 +93,7 @@
 				case "top":this.body[0][1] -= 1;break;
 				case "bottom":this.body[0][1] += 1;break;
 			}
-			
+
 			this.display();
 		}
 		Snake.prototype.direction = function(value){
@@ -104,31 +104,31 @@
 				case 40:this.direct = "bottom";break;
 			}
 		}
-		
-		
-		
-		
-		
-		
+
+
+
+
+
+
 		function random(a,b){
 			return Math.round(Math.random()*(a-b)+b)
 		}
-		
-		
+
+
 		var map = new Map()
 		var food = new Food()
 		var snake = new Snake();
-		
+
 		setInterval(()=>{
 			food.display()
 			console.log(food.x,food.y)
 		},500)
-		
+
 		document.onkeydown = function(eve){
 			var e = eve || window.event;
 			var code = e.keyCode || e.which;
 			snake.direction(code)
 		}
-		
+
 	</script>
 </html>
