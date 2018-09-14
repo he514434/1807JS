@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+//		继承:
+//			子承父业
+//			授权使用
+		
+//		function Fn(){
+//			this.show = function(){
+//				alert("hello")
+//			}
+//		}
+//		var a = new Fn()
+//		var b = new Fn()
+//		a.show()
+//		b.show()
+//		alert(a.show == b.show)
+
+//		构造函数继承
+//		function Fn(){}
+//		Fn.prototype.show = function(){
+//			alert("jahaha")
+//		}
+//		var a = new Fn()
+//		var b = new Fn()
+//		a.show()
+//		b.show()
+//		alert(a.show == b.show)
+		
+		
+//		call和apply继承（子承父业）：
+//		function Father(s1,s2){
+//			this.skill1 = s1;
+//			this.skill2 = s2;
+//			this.show = function(){
+//				alert(this.skill1 + "-------" + this.skill2)
+//			}
+//		}
+//		function Son(){
+////			如果,能够在son的函数内执行father,同时将father的this改成son
+////			Father.bind(this,s1,s2)()
+////			Father.call(this,s1,s2)
+////			Father.apply(this,[s1,s2])
+//			Father.apply(this,arguments)
+//		}
+//		var f = new Father("js","php")
+//		f.show()
+//		var s = new Son("html","css")
+//		s.show()
+		
+//		番外篇:call和apply的使用
+//		var obj = {
+//			name:"obj",
+//			show:function(a,b){
+//				console.log(this)
+//				console.log(a,b)
+//				console.log(arguments)
+//			}
+//		}
+//		obj.show.bind("hahaha","qwe","asd")("hello","world")
+		
+//		var obj = {
+//			name:"obj",
+//			show:function(a,b){
+//				console.log(this)
+//				console.log(a,b)
+//				console.log(arguments)
+//			}
+//		}
+//		obj.show.call("hahha","qwe","asd")
+		
+//		var obj = {
+//			name:"obj",
+//			show:function(a,b){
+//				console.log(this)
+//				console.log(a,b)
+//				console.log(arguments)
+//			}
+//		}
+//		obj.show.apply("hahha",["qwe","asd"])
+		
+//		var arr = [34,23,45,12,45,52,11,89];
+////		当min接受多个参数的时候,在min函数的内部,肯定要对这些参数进行处理和比较,当传数组的时候,只有一个数据,没法处理和比较,所以是NaN
+//		var min = Math.min.apply(null,arr)
+//		console.log(min)
+//		var max = Math.max.apply(null,arr)
+//		console.log(max)
+		
+		
+		
+//		call和apply继承（子承父业）：只能继承构造函数，不能继承原型
+//		function Father(s1,s2){
+//			this.skill1 = s1;
+//			this.skill2 = s2;
+//			this.show = function(){
+//				alert(this.skill1 + "-------" + this.skill2)
+//			}
+//		}
+////		Father.prototype.init = function(){
+////			alert("这是father的init")
+////		}
+//		
+//		function Son(){
+////			如果,能够在son的函数内执行father,同时将father的this改成son
+////			Father.bind(this,s1,s2)()
+////			Father.call(this,s1,s2)
+////			Father.apply(this,[s1,s2])
+//			Father.apply(this,arguments)
+//		}
+//		var f = new Father("js","php")
+//		f.show()
+//		f.init()
+//		var s = new Son("html","css")
+//		s.show()
+//		s.init()
+		
+		
+		
+//		原型继承（授权使用）：只能继承原型，不能继承构造函数
+//		function Father(s1){
+//			this.skill = s1
+//		}
+//		Father.prototype.show = function(){
+//			alert(this.skill)
+//		}
+//		function Son(s1){
+//			this.skill = s1
+//		}
+////		Son.prototype = Father.prototype;
+//		for(var i in Father.prototype){
+//			Son.prototype[i] = Father.prototype[i]
+//		}
+//		Son.prototype.show = function(){
+//			console.log(this.skill)
+//		}
+//		
+//		var f = new Father("二两肉的狗不理包子")
+//		f.show()
+//		var s = new Son("二两肉的狗不理包子")
+//		s.show()
+		
+		
+//		番外篇:对象的深浅拷贝
+//		var obj = {
+//			name:"admin"
+//		}
+////		var obj2 = obj;
+//		var obj2 = {}
+//		for(var i in obj){
+//			obj2[i] = obj[i]
+//		}
+//		obj2.name = "root"
+//		console.log(obj)
+//		console.log(obj2)
+		
+		
+//		混合继承：call和apply继承+原型继承：既可以继承构造函数，也能继承原型
+//		function Father(s1){
+//			this.skill = s1
+//		}
+//		Father.prototype.show = function(){
+//			alert(this.skill)
+//		}
+//		
+//		function Son(s1){
+//			Father.apply(this,arguments)
+//		}
+//		for(var i in Father.prototype){
+//			Son.prototype[i] = Father.prototype[i]
+//		}
+//		Son.prototype.show = function(){
+//			console.log(this.skill)
+//		}
+//		
+//		var f = new Father("二两肉的狗不理包子")
+//		f.show()
+//		var s = new Son("五两肉的狗不理包子")
+//		s.show()
+		
+		
+//		原型链:
+		
+		
+	</script>
+</html>

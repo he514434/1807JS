@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		
+//		类：构造器，构造同一类对象的构造器
+//		构造函数:构造对象用来编程
+//			构造函数:属性
+//			原型:方法
+		
+		
+//		ES6的面向对象的语法
+//		class People{
+//			constructor(){
+//				this.name = "admin"
+//			}
+//			show(){
+//				console.log(this.name)
+//			}
+//		}
+//		var p = new People()
+//		p.show()
+//		console.log(p)
+		
+//		php中的class的语法
+//		class People{
+//			var $name = "admin";
+//			function show(){
+//				echo $this->name;
+//			}
+//		}
+//		$p = new People();
+//		$p->show();
+		
+		
+//		function Fn(){
+//			this.name = "root"
+//		}
+//		Fn.prototype.show = function(){
+//			console.log(this.name)
+//		}
+//		Fn.prototype.init = function(){
+//			console.log(this.name)
+//		}
+//		var f = new Fn()
+//		f.show()
+//		console.log(f)
+		
+		
+//		ES6的继承原理:利用了call或apply继承属性,原型链继承方法的工作原理
+//		class Father{
+//			constructor(s1){
+//				this.skill = s1
+//			}
+//			show(){
+//				alert(this.skill)
+//			}
+//			init(){
+//				alert("这是init中打印的技能" + this.skill)
+//			}
+//		}
+//		
+//		class Son extends Father{
+//			constructor(s1){
+//				super(s1)
+//			}
+//		}
+//		
+//		var f = new Father("绝世铁匠")
+//		f.show()
+//		f.init()
+//		console.log(f)
+//		
+//		var s = new Son("一般铁匠")
+//		s.show()
+//		s.init()
+//		console.log(s)
+		
+		
+		
+		function Fn(){
+			this.name = "admin"
+		}
+		Fn.prototype.show = function(){
+			console.log(this.name)
+		}
+		
+		var f = new Fn()
+		
+		var obj = {}
+		
+//		判断某个实例,是否有指针指向某个函数的原型对象，isPrototypeOf是函数原型的方法
+		console.log(Fn.prototype.isPrototypeOf(f))
+		console.log(Fn.prototype.isPrototypeOf(obj))
+		
+//		判断某个实例,是否属于某个构造函数，关键字
+		console.log(f instanceof Fn)
+		console.log(obj instanceof Fn)
+		
+	</script>
+</html>

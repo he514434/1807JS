@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.drag1{width: 100px;height: 100px;background: red;position: absolute;}
+			.drag2{width: 100px;height: 100px;background: blue;position: absolute;left: 120px;}
+		</style>
+	</head>
+	<body>
+		<div class="drag1"></div>
+		<div class="drag2"></div>
+	</body>
+	<script type="text/javascript">
+		
+//		function Drag(ele){
+//			this.ele = ele;
+//			this.init()
+//		}
+//		Drag.prototype.init = function(){
+//			this.d = this.down.bind(this);
+//			this.m = this.move.bind(this);
+//			this.u = this.up.bind(this);
+//			this.ele.addEventListener("mousedown",this.d);
+//		}
+//		Drag.prototype.down = function(eve){
+//			var e = eve || window.event
+//			this.disX = e.offsetX;
+//			this.disY = e.offsetY;
+//			console.log(this)
+//			document.addEventListener("mousemove",this.m)
+//			document.addEventListener("mouseup",this.u)
+//		}
+//		Drag.prototype.move = function(eve){
+//			var e = eve || window.event;
+//			
+//			this.ele.style.left = e.clientX - this.disX + "px";
+//			this.ele.style.top = e.clientY - this.disY + "px";
+//		}
+//		Drag.prototype.up = function(){
+//			document.removeEventListener("mousemove",this.m)
+//			document.removeEventListener("mouseup",this.u)
+//		}
+		
+		
+		
+		
+//		混合继承
+//		function Drag(ele){
+//			this.ele = ele;
+//			this.init()
+//		}
+//		Drag.prototype.init = function(){
+//			var that = this;
+//			this.ele.addEventListener("mousedown",function(eve){
+//				var e = eve || window.event
+//				that.disX = e.offsetX;
+//				that.disY = e.offsetY;
+//				document.onmousemove = function(eve){
+//					var e = eve || window.event;
+//					that.move(e)
+//				}
+//				document.onmouseup = function(){
+//					that.up()
+//				}
+//			});
+//		}
+//		Drag.prototype.move = function(e){
+//			this.ele.style.left = e.clientX - this.disX + "px";
+//			this.ele.style.top = e.clientY - this.disY + "px";
+//		}
+//		Drag.prototype.up = function(){
+//			document.onmousemove = document.onmouseup = null;
+//		}
+//		
+//		
+//		function SmallDrag(ele){
+//			Drag.call(this,ele)
+//		}
+//		for(var i in Drag.prototype){
+//			SmallDrag.prototype[i] = Drag.prototype[i]
+//		}
+//		SmallDrag.prototype.move = function(e){
+//			var l = e.clientX - this.disX;
+//			var t = e.clientY - this.disY;
+//			
+//			if(l<0) l=0
+//			if(t<0) t=0
+//			
+//			this.ele.style.left = l + "px";
+//			this.ele.style.top = t + "px";
+//		}
+//		
+//		var odrag1 = document.querySelector(".drag1");
+//		var odrag2 = document.querySelector(".drag2");
+//		
+//		new Drag(odrag1)
+//		new SmallDrag(odrag2)
+		
+		
+//		原型链继承
+//		function Drag(){}
+//		
+//		Drag.prototype.init = function(ele){
+//			this.ele = ele;
+//			var that = this;
+//			this.ele.addEventListener("mousedown",function(eve){
+//				var e = eve || window.event
+//				that.disX = e.offsetX;
+//				that.disY = e.offsetY;
+//				document.onmousemove = function(eve){
+//					var e = eve || window.event;
+//					that.move(e)
+//				}
+//				document.onmouseup = function(){
+//					that.up()
+//				}
+//			});
+//		}
+//		Drag.prototype.move = function(e){
+//			this.ele.style.left = e.clientX - this.disX + "px";
+//			this.ele.style.top = e.clientY - this.disY + "px";
+//		}
+//		Drag.prototype.up = function(){
+//			document.onmousemove = document.onmouseup = null;
+//		}
+//		
+//		function SmallDrag(){}
+//		
+//		SmallDrag.prototype = new Drag();
+//		
+//		SmallDrag.prototype.move = function(e){
+//			var l = e.clientX - this.disX;
+//			var t = e.clientY - this.disY;
+//			
+//			if(l<0) l=0
+//			if(t<0) t=0
+//			
+//			this.ele.style.left = l + "px";
+//			this.ele.style.top = t + "px";
+//		}
+//		
+//		var odrag1 = document.querySelector(".drag1");
+//		var odrag2 = document.querySelector(".drag2");
+//		
+//		var d1 = new Drag()
+//		d1.init(odrag1)
+//		var d2 = new SmallDrag(odrag2)
+//		d2.init(odrag2)
+
+
+
+//		ES6的class继承
+		class Drag{
+			constructor(ele){
+				this.ele = ele;
+				this.init()
+			}
+			init(){
+				var that = this;
+				this.ele.addEventListener("mousedown",function(eve){
+					var e = eve || window.event
+					that.disX = e.offsetX;
+					that.disY = e.offsetY;
+					document.onmousemove = function(eve){
+						var e = eve || window.event;
+						that.move(e)
+					}
+					document.onmouseup = function(){
+						that.up()
+					}
+				});
+			}
+			move(e){
+				this.ele.style.left = e.clientX - this.disX + "px";
+				this.ele.style.top = e.clientY - this.disY + "px";
+			}
+			up(){
+				document.onmousemove = document.onmouseup = null;
+			}
+		}
+		
+		class SmallDrag extends Drag{
+			constructor(ele){
+				super(ele)
+			}
+			move(e){
+				var l = e.clientX - this.disX;
+				var t = e.clientY - this.disY;
+				
+				if(l<0) l=0
+				if(t<0) t=0
+				
+				this.ele.style.left = l + "px";
+				this.ele.style.top = t + "px";
+			}
+		}
+		
+		var odrag1 = document.querySelector(".drag1");
+		var odrag2 = document.querySelector(".drag2");
+		
+		new Drag(odrag1)
+		new SmallDrag(odrag2)
+		
+	</script>
+</html>

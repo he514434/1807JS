@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+//		组合模式:
+//			将多个对象组合起来,形成树形结构的关系,方便使用,每次操作父对象,下面所有子对象全部跟随操作
+		
+		function ImagesStore( id ){
+		    this.children = [];
+		    this.element = document.createElement("div");
+		    this.element.id = id;
+		    this.element.className = "imgs-store";
+		    document.body.appendChild(this.element)
+		}
+		ImagesStore.prototype = {
+		    constructor : ImagesStore,
+		    add:function( child ){
+		        this.children.push( child );
+		        this.element.appendChild( child.getElement() );
+		    },
+		    remove:function( child ){
+		        for( var node, i=0; node = this.getChild(i); i++ ){
+		            if( node === child ){
+		                this.children.splice( i, 1 );
+		                break;
+		            }
+		        }
+		        this.element.removeChild( child.getElement() );
+		    },
+		    getChild:function( i ){
+		        return this.children[i];
+		    },
+		    show:function(){
+		        this.element.style.display = 'block';
+		        for( var node, i=0; node = this.getChild(i); i++ ){
+		            node.show();
+		        }
+		    },
+		    hide:function(){
+		        for( var node, i=0; node = this.getChild(i); i++ ){
+		            node.hide();
+		        }
+		        this.element.style.display = 'none';
+		    },
+		    getElement:function(){
+		        return this.element;
+		    }
+		}
+
+
+		function ImageItem( src ){
+		    this.element = document.createElement("img");
+		    this.element.src = src;
+		    this.element.className = "img-item";
+		}
+		ImageItem.prototype = {
+		    constructor:ImageItem,
+		    add:function( child ){
+		        console.log("这是一个叶对象，不能给叶对象添加子对象了");
+		    },
+		    remove:function( child ){
+		        console.log("这是一个叶对象，不能给叶对象删除子对象");
+		    },
+		    getChild:function( i ){
+		        console.log("这是一个叶对象，没有子对象");
+		    },
+		    show:function(){
+		        this.element.style.display = 'block';
+		    },
+		    hide:function(){
+		        this.element.style.display = 'none';
+		    },
+		    getElement:function(){
+		        return this.element;
+		    }
+		}
+		
+		
+		
+		var son1 = new ImageItem("https://www.baidu.com/img/bd_logo1.png");
+		var son2 = new ImageItem("http://c.hiphotos.baidu.com/image/h%3D300/sign=4bc239aadda20cf45990f8df46094b0c/9d82d158ccbf6c81924a92c5b13eb13533fa4099.jpg");
+		
+//		son.add()
+//		son.remove()
+//		son.getChild()
+//		son.show()
+//		son.hide()
+//		console.log(son.getElement())
+		
+		var father = new ImagesStore("box");
+		
+		father.add(son1)
+		father.add(son2)
+//		father.remove(son2)
+//		father.hide()
+//		father.show()
+		
+		son1.hide()
+		
+		
+		
+		
+	</script>
+</html>

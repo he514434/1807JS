@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+//		闭包
+		function fn(){
+			var a = 10;
+			return function(){
+				a++
+				console.log(a)
+			}
+		}
+		var f = fn()
+		f()
+		f()
+		f()
+		
+		for(var i=0;i<10;i++){
+			ali[i].onclick = (function(a){
+				return function(){
+					console.log(a)
+				}
+			})(i)
+		}
+		
+//		函数的嵌套，作用域的嵌套
+//		在函数内部获取函数外部的值
+//		将局部变量进化成自由(私有)变量
+		
+//		通过函数的嵌套(作用域的嵌套),触发系统的垃圾回收机制,使内部函数能访问到外部函数的变量,将局部变量进化成自由变量的过程 的 环境,叫闭包
+		
+//		闭包不是一种写法,是一种环境
+		
+//		垃圾回收机制:当删除某个文件或数据的时候，系统会将要删除的内容暂时存放在某个区域，以防再次使用，除非真正不用了，才彻底删除
+//		function fn(){
+//			var a = 10;
+//			a++
+//			console.log(a)
+//		}
+//		fn()
+		
+//		闭包:
+//			优缺点:
+//				随时调出上次的执行结果,占内存,耗性能
+		
+		
+//		继承
+	</script>
+</html>

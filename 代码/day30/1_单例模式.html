@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.model{width:140px;height: 70px;line-height: 70px;text-align: center;background: #000;color: #fff;position: absolute;top: 0;bottom: 0;left:0;right:0;margin: auto;border-radius: 6px;}
+		</style>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+//		单例模式
+//		单个实例
+
+//		function Fn(){
+//			if(!Fn.obj){
+//				Fn.obj = {}
+//			}
+//			
+//			Fn.obj.name = "admin";
+//			
+//			return Fn.obj;
+//		}
+//		var a = new Fn()
+//		var b = new Fn()
+//		var c = new Fn()
+//		var d = new Fn()
+//		var e = new Fn()
+//		
+//		console.log(a)
+//		console.log(b)
+//		
+//		console.log(a.name)		//admin
+//		console.log(a == b)		//true
+//		console.log(c == b)		//true
+//		console.log(c == d)		//true
+//		console.log(d == e)		//true
+//		console.log(a == e)		//true
+		
+//		new函数得到返回值
+//		如果这个函数有return,再new调用,如果return的是对象，那么这个对象覆盖函数同名对象
+		
+		
+		document.onclick = function(){
+			var a = new Toast()
+			var b = new Toast()
+			var c = new Toast()
+			
+			console.log(a == b)
+			console.log(c == b)
+		}
+		
+		function Toast(){
+			if(!Toast.obj){
+				Toast.obj = {}
+				
+				Toast.obj.ele = document.createElement("div");
+				Toast.obj.ele.className = "model";
+				document.body.appendChild(Toast.obj.ele);
+				Toast.obj.ele.innerHTML = "你好";
+			}else{
+				Toast.obj.ele.style.display = "block"
+			}
+			
+			clearTimeout(Toast.obj.timer);
+			Toast.obj.timer = setTimeout(()=>{
+				Toast.obj.ele.style.display = "none"
+			},2000)
+			
+			return Toast.obj;
+		}
+		
+	</script>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+//		原型链继承
+		function Father(){}
+		Father.prototype.show = function(s1,s2){
+			this.skill1 = s1;
+			this.skill2 = s2;
+			
+			alert(this.skill1 + "-------" + this.skill2)
+		}
+		
+		function Son(){}
+		
+		Son.prototype = new Father()
+		Son.prototype.show = function(){
+			console.log("hahahah");
+		}
+		
+//		new出来的对象---->当前的构造函数的原型------->大对象(Object)
+//		new出来的对象---->new出来的father对象------->Father的构造函数的原型-------->大对象(Object)
+		
+		var f = new Father()
+		f.show("js","php")
+		console.log(f)
+		
+		var s = new Son()
+		console.log(s)
+		s.show("html","css")
+		
+	</script>
+</html>
