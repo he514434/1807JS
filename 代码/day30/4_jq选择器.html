@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			/*.small h2:not(.one){border: solid 10px black;}*/
+			.active{background: red;}
+			.box{width: 100px;}
+		</style>
+	</head>
+	<body>
+		<div id="box1" class="active">
+			hello jquery select
+		</div>
+		<input type="text" name="" id="" value="" />
+		<input type="button" name="" id="" value="" />
+		<ul class="list" style="display: none;">
+			<li>html</li>
+			<li>css</li>
+			<li>css+js</li>
+			<li>html+js</li>
+			<li>php</li>
+			<li>mysql</li>
+		</ul>
+		<ul class="list">
+			<li>html</li>
+			<li>css</li>
+			<li>css+js</li>
+			<li class="css">html+js</li>
+			<li>php</li>
+			<li>mysql</li>
+		</ul>
+		<div id="cont">1</div>
+		<div id="cont">2</div>
+		<div id="cont">3</div>
+		<div class="box">4</div>
+		<div class="box">5</div>
+		<div class="box">6</div>
+		<div id="msg">
+			<h2>22222222</h2>
+			<h2>22222222</h2>
+			<div class="small">
+				<h2>ssssssss222222</h2>
+				<h2>ssssssss222222</h2>
+				<h2 class="one">ssssssss222222</h2>
+				<h2>ssssssss222222</h2>
+				<h2></h2>
+				<h2>ssssssss222222</h2>
+			</div>
+		</div>
+		<span>7</span>
+		<span>8</span>
+		<span>9</span>
+		<input type="text" name="user" id="" value="" />
+		<input type="text" name="sex" id="" value="" />
+		<input type="text" name="sex" id="" value="" />
+	</body>
+	<script src="jquery.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+//		原生选择器:指哪打哪
+//		var ocont = document.getElementById("cont");
+//		console.log(ocont)
+//		ocont.style.background = "red"
+//		ocont.css("background","red")
+//		$(ocont).css("background","red")
+		
+//		jQuery的选择器
+//		jq选择器:不管选择谁,都会保存到一个数组中
+//		var omsg = $("#msg");
+//		console.log(omsg)
+//		omsg[0].style.background = "blue"
+//		omsg.css("background","blue")
+//		omsg[0].style.background = "blue"
+//		omsg.get(0).style.background = "blue"
+//		
+//		omsg.click(function(){
+//			console.log(document.getElementById("cont"))
+//		})
+		
+		
+//		$("#cont").css("background","blue")
+//		$(".box").css("background","blue")
+//		$("span").css("background","blue")
+		
+//		$("span,.box,#cont").css("background","blue")
+		
+//		$("#msg h2").css("background","blue")
+//		$("#msg>h2").css("background","blue")
+//		$("#msg+span").css("background","blue")
+//		$("#msg~span").css("background","blue")
+		
+//		$("#msg").find("h2").css("background","blue")
+//		$("#msg").children("h2").css("background","blue")
+//		$("#msg").next("span").css("background","blue")
+//		$("#msg").nextAll("span").css("background","blue")
+		
+		
+//		$(".small h2:first").css("background","blue")
+//		$(".small h2").first().css("background","blue")
+		
+//		$(".small h2:last").css("background","blue")
+//		$(".small h2").last().css("background","blue")
+
+//		$(".small h2:even").css("background","blue")
+
+//		$(".small h2:odd").css("background","blue")
+		
+//		$(".small h2:not(.one)").css("background","blue")
+//		$(".small h2").not(".one").css("background","blue")
+		
+//		$(".small h2:eq(3)").css("background","blue")
+//		$(".small h2").eq(3).css("background","blue")
+		
+		
+//		$(".list li:contains(html)").css("background","blue")
+		
+//		$("input[type=button]").click(function(){
+//			$(".list li").css("background","")
+//			$(".list li:contains("+ $("input[name='']").val() +")").css("background","blue")
+//		})
+		
+		
+//		$(".small").children("h2:empty").css("border","solid 4px black")
+		
+//		$(".list:has(.css)").css("border","solid 4px black")
+//		$(".list").has(".css").css("border","solid 4px black")
+		
+		
+//		$(".list:hidden").css("border","solid 4px black")
+//		$(".list:visible").css("border","solid 4px black")
+		
+		
+//		console.log($("#box1").is(".active"))
+//		console.log($("#box1").hasClass("active"))
+		
+//		$("input[type=button]").click(function(){
+//			if($("#box1").is(".active")){
+//				$("#box1").removeClass("active")
+//			}else{
+//				$("#box1").addClass("active")
+//			}
+//		})
+		
+//		$("#box").click(function(){})
+//		$("#box1").removeClass("active")
+//		$("#box1").addClass("active")
+//		$(".box").css({
+//			background:"red",
+//			border:"solid 10px yellow",
+//			width:"+=100px",
+//		})
+//		$("input").val()
+//		$(".box").html()
+		
+	</script>
+</html>

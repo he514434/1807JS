@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{margin: 0;padding: 0;list-style: none;}
+			.nav{line-height: 60px;background: #ccc;}
+			.nav>ul{width: 100%;height: 60px;display: flex;}
+			.nav>ul>li{flex: 1;border-left: solid 1px black;border-right: solid 1px black;text-align: center;}
+			.nav ul li.active{background: red;}
+			
+			.nav li ul{background: #eee;display: none;}
+			.nav li li{line-height: 40px;border-bottom: solid 1px #888;}
+			
+		</style>
+	</head>
+	<body>
+		<div class="tab nav">
+			<ul>
+				<li>
+					<span>一级菜单</span>
+					<ul>
+						<li>二级菜单</li>
+						<li>二级菜单</li>
+						<li>二级菜单</li>
+						<li>二级菜单</li>
+					</ul>
+				</li>
+				<li>
+					<span>一级菜单</span>
+					<ul>
+						<li>二级菜单</li>
+						<li>二级菜单</li>
+						<li>二级菜单</li>
+						<li>二级菜单</li>
+					</ul>
+				</li>
+				<li>
+					<span>一级菜单</span>
+					<ul>
+						<li>二级菜单</li>
+						<li>二级菜单</li>
+						<li>二级菜单</li>
+						<li>二级菜单</li>
+					</ul>
+				</li>
+				<li>
+					<span>一级菜单</span>
+					<ul>
+						<li>二级菜单</li>
+						<li>二级菜单</li>
+						<li>二级菜单</li>
+						<li>二级菜单</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</body>
+	<script src="../jquery.js" type="text/javascript" charset="utf-8"></script>
+	<script src="jquery.nav.1.0.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		
+//		$(".tab").nav()
+
+		$.nav($(".nav"))
+	</script>
+</html>

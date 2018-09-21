@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div{width:100px;height:100px;background: red;position: absolute;top: 30px;}
+			li ul{display: none;}
+		</style>
+	</head>
+	<body>
+		<ul>
+			<li>
+				<span>一级菜单</span>
+				<ul>
+					<li>二级菜单</li>
+					<li>二级菜单</li>
+					<li>二级菜单</li>
+				</ul>
+			</li>
+			<li>
+				<span>一级菜单</span>
+				<ul>
+					<li>二级菜单</li>
+					<li>二级菜单</li>
+					<li>二级菜单</li>
+				</ul>
+			</li>
+			<li>
+				<span>一级菜单</span>
+				<ul>
+					<li>二级菜单</li>
+					<li>二级菜单</li>
+					<li>二级菜单</li>
+				</ul>
+			</li>
+		</ul>
+		
+	<script src="../jquery.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+			
+		$("body").children("ul").children("li").mouseover(function(){
+			$(this).children("ul").stop().show(300)
+		})
+		$("body").children("ul").children("li").mouseout(function(){
+			$(this).children("ul").stop().hide(300)
+		})
+			
+	</script>
+	</body>
+</html>

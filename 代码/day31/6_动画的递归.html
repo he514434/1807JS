@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div{width:100px;height:100px;background: red;position: absolute;top: 30px;}
+		</style>
+	</head>
+	<body>
+		<input type="button" name="" id="btn1" value="开始" />
+		<div></div>
+		
+	<script src="../jquery.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+
+			$("#btn1").click(function(){
+				
+				$("div").toggle(2000,function(){
+					$("div").toggle(2000,arguments.callee)
+				})
+				
+			})
+			
+	</script>
+	</body>
+</html>

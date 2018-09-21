@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div{width:100px;height:100px;background: red;position: absolute;top: 30px;}
+		</style>
+	</head>
+	<body>
+		<input type="button" name="" id="btn1" value="开始" />
+		<input type="button" name="" id="btn2" value="停止" />
+		<div></div>
+		
+		
+	<script src="../jquery.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+//			$.fx.off=true;
+			
+//			$.fx.interval=200;
+			
+			$("#btn1").click(function(){
+				
+				$("div").animate({
+					left:300
+				},2000).animate({
+					top:400
+				},2000).animate({
+					left:0
+				},2000)
+			})
+			
+			
+	</script>
+	</body>
+</html>

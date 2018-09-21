@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			
+			input{border: solid 10px black;}
+			
+			input:nth-child(1){border-color: red;}
+			
+		</style>
+	</head>
+	<body>
+		<form>
+			<input type="text" name="user" value="" />
+			<input type="text" name="pass" value="" />
+			<input type="button" name="btn" id="btn" value="" />
+		</form>
+	</body>
+	<script src="../jquery.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+//		"user=admin&pass=123"
+		
+		$("#btn").click(function(){
+			console.log($("form").serialize())
+		})
+		
+	</script>
+</html>

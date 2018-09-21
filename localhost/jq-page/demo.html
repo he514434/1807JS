@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+    	<link rel="stylesheet" href="style/pagination.css"/>
+		<style type="text/css">
+	        * {
+	            padding: 0;
+	            margin: 0;
+	        }
+	
+	        #list {
+	            width: 1000px;
+	            margin: 10px auto;
+	        }
+	
+	        #list ul {
+	            list-style: none;
+	        }
+	
+	        #list ul li {
+	            width: 240px;
+	            height: 190px;
+	            margin-left: 8px;
+	            margin-top: 25px;
+	            margin-bottom: 5px;
+	            position: relative;
+	            float: left;
+	        }
+	
+	        #list ul li div.img {
+	            padding: 4px;
+	            border-radius: 10px;
+	            box-shadow: 0 0 5px #cdcdcd;
+	            border: 1px solid #cdcdcd;
+	            margin-top: 10px;
+	        }
+	
+	        #list ul li div img {
+	            width: 230px;
+	            height: 180px;
+	        }
+	
+	        #list ul li div.detail {
+	            margin: 5px;
+	            color: #559999;
+	            float: left;
+	            width: 240px;
+	        }
+	
+	        #list ul li span.price {
+	            float: right;
+	            color: #cc0033;;
+	            margin-right: 8px;
+	        }
+	
+	        #setPageDiv {
+	            clear: left;
+	            width: 1000px;
+	            margin: 10px auto;
+	        }
+	
+	        .shopping {
+	            position: fixed;
+	            height: 50px;
+	            width: 200px;
+	            right: 0px;
+	            top: 15px;
+	        }
+	
+	        .shopping-buy-btn {
+	            border: 1px dotted #cdcdcd;
+	            background-color: #cdcdcd;
+	            color: #cc0033;
+	            font-size: small;
+	            border-radius: 3px;
+	            box-shadow: 0 0 5px #cdcdcd;
+	
+	        }
+	
+	        .shopping span.showNum {
+	            position: absolute;
+	            left: 8px;
+	            top: -8px;
+	            background-color: #f69;
+	            color: #FFFFFF;
+	            font-size: large;
+	            width: 20px;
+	            height: 15px;
+	            border-radius: 20px;
+	            text-align: center;
+	        }
+	    </style>
+	</head>
+	<body>
+		<div id="setPageDiv">
+		    <select id="setPage">
+		        <option value="4">四条数据</option>
+		        <option value="8">八条数据</option>
+		        <option value="12">十二条数据</option>
+		    </select>
+		
+		    <div id="Pagination" class="pagination"></div>
+		</div>
+		<div id="list" class="list">
+			<ul>
+			</ul>
+		</div>
+	</body>
+	<script src="js/jquery.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/jquery.pagination.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		
+//		请求数据
+//		渲染页面
+//		生成页码(调用插件)
+//		根据当前页码,渲染其他分页的数据
+//		
+//		当改变单页显示数量的时候,重新执行整个过程
+		
+		
+		class Page{
+			constructor(options){
+				this.url = options.url;
+				this.pageCont = options.pageCont;
+				this.num = options.num;
+				this.index = 0;
+				this.list = options.list
+				
+				this.load()
+			}
+			load(){
+				var that = this;
+				$.ajax({
+					url:this.url,
+					type:"get",
+					success:function(res){
+//						that.res = JSON.parse(res)
+						that.res = res;
+						that.createPage()
+					}
+				})
+			}
+			display(){
+				console.log(this.res,this.index)
+				
+//				this.num
+//				this.index
+				
+//				this.index*this.num		this.index*this.num + this.num
+//				0*4		0*4+4
+//				1*4		1*4+4
+//				2*4		2*4+4
+				
+				var str = ""
+				for(var i=this.index*this.num;i<this.index*this.num+this.num;i++){
+					if(i<this.res.length){
+						str += `<li>
+									<div class="img">
+										<img src="${this.res[i].img}">
+									</div>
+									<div class="detail">
+										${this.res[i].info}
+										<span class="price">特价$${this.res[i].price}</span>
+									</div>
+								</li>`;
+					}
+				}
+				this.list.html(str);
+				
+			}
+			createPage(){
+				var that = this;
+				this.pageCont.pagination(this.res.length,{
+					items_per_page:this.num,
+					current_page:this.index,
+					callback:function(index){
+						that.index = index;
+						that.display()
+					}
+				})
+			}
+		}
+		
+		
+		
+		new Page({
+			url:"http://localhost/1807/jq-page/data/list.json",
+			pageCont:$(".pagination"),
+			num:4,
+			list:$(".list ul")
+		})
+		
+		$("#setPage").on("change",function(){
+			new Page({
+				url:"http://localhost/1807/jq-page/data/list.json",
+				pageCont:$(".pagination"),
+				num:parseInt($(this).val()),
+				list:$(".list ul")
+			})
+		})
+		
+		
+		
+	</script>
+</html>

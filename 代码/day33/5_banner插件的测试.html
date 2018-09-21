@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{margin: 0;padding: 0;list-style: none;}
+			.cont{width: 1130px;height: 300px;margin: 20px auto;position: relative;}
+			.imgbox{width: 1130px;height: 300px;}
+			.imgbox a{width: 1130px;height: 300px;position: absolute;left: 1130px;top: 0;}
+			.imgbox a:nth-child(1){left:0;}
+			.imgbox a img{width: 1130px;height: 300px;}
+			input{width: 50px;height: 50px;border: none;background: rgba(200,200,200,0.6);position: absolute;top: 125px;z-index: 9999999;}
+			#prev{left: 0;}
+			#next{right: 0;}
+			
+			.list{line-height: 30px;width: 1130px;display: flex;background: rgba(200,200,200,0.5);position: absolute;left: 0;bottom: 0;}
+			.list li{flex: 1;border-right: solid 1px black;text-align: center;}
+			
+		</style>
+	</head>
+	<body>
+		<div class="cont cont1">
+			<div class="imgbox">
+				<a href=""><img src="https://img.zcool.cn/community/01c4005b863607a80120245cc788a1.jpg@1380w"/></a>
+				<a href=""><img src="https://img.zcool.cn/community/01eb7b5b85ff52a80120245c031a6b.jpg@1380w"/></a>
+				<a href=""><img src="https://img.zcool.cn/community/01327f5b8422c7a80120577d2aa796.png@1380w"/></a>
+				<a href=""><img src="https://img.zcool.cn/community/0174f85b8422f2a8012190f2b97fa9.png@1380w"/></a>
+			</div>
+			<input type="button" name="" id="prev" value="<<<" />
+			<input type="button" name="" id="next" value=">>>" />
+			<ul class="list">
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+				<li>4</li>
+			</ul>
+		</div>
+	</body>
+	<script src="../jquery.js" type="text/javascript" charset="utf-8"></script>
+	<script src="jqery.banner.1.0.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		
+		$(".cont1").banner({
+			items:$(".cont1").children(".imgbox").children(),		//必填，要运动的元素
+			left:$(".cont1").find("#prev"),					//可选，不传没有功能
+			right:$(".cont1").find("#next"),				//可选，不传没有功能
+			list:$(".cont1").children(".list").children(),	//可选，不传没有功能
+			autoPlay:false,				//可选，不传为自动，true为自动，false为不动
+//			moveTime:200,				//可选，一张图片运动的时间，不传为，300
+//			delayTime:2000				//可选，每张图片间隔的时候，不穿为，3000
+		})
+		
+	</script>
+</html>

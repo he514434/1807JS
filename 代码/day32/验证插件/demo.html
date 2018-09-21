@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.error{font-weight: bold;color: red;}
+			.valid{border: solid 2px green;}
+		</style>
+	</head>
+	<body>
+		<form action="" method="post">
+			用户名：<input type="text" required=true name="user" /><br />
+			密码：<input type="text" required=true name="pass" id="pass" /><br />
+			重复密码：<input type="text" required=true name="pass2" equalTo="#pass"/><br />
+			邮箱：<input type="text" required=true name="email" email=true/><br />
+			手机号：<input type="text" required=true name="tel" number=true digits=true maxlength="11" minlength="11" /><br />
+			网址：<input type="text" required=true name="url" url=true/><br />
+			<input type="submit" value="提交"/>
+		</form>
+	</body>
+	<script src="../../jquery.js" type="text/javascript" charset="utf-8"></script>
+	<script src="jquery.validate.js" type="text/javascript" charset="utf-8"></script>
+	<script src="jquery.validate.messages_zh.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		
+		$("form").validate();
+		
+	</script>
+</html>

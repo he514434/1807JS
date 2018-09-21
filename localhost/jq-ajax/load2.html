@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{margin: 0;padding: 0;}
+			.top{height: 80px;line-height: 80px;font-size: 20px;text-align: center;background: #ccc;}
+			.top ul{display: flex;}
+			.top li{flex: 1;border-right: solid 1px black;}
+			.box{height: 200px;font:80px/100px "微软雅黑";text-align: center;background: pink;}
+			.footer{height: 80px;line-height: 80px;font-size: 20px;text-align: center;background: #ccc;}
+		</style>
+	</head>
+	<body>
+		<div class="cont">
+			<div class="top">
+				
+			</div>
+			<div class="box">
+				这是load222222内容
+			</div>
+			<div class="footer">
+				
+			</div>
+		</div>
+	</body>
+	<script src="../jquery.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		
+		$(".top").load("http://localhost/1807/jq-ajax/data/top.html ul")
+		$(".footer").load("http://localhost/1807/jq-ajax/data/top.html p")
+		
+	</script>
+</html>
