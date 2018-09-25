@@ -1,381 +1,350 @@
 {
-      "liClass": "active treeview",
-      "link": "index2.html",
-      "label": "结构预览",
-      "iClass": "'fa fa-dashboard'",
-      "children": []
-    },
-    {
-      "liClass": "treeview",
-      "link": "#",
-      "label": "案例",
-      "iClass": "'fa fa-files-o'",
-      "spanClass": "pull-right-container",
-      "spanChildIClass": "label label-primary pull-right",
-      "children": [
-        {
+  "liClass": "active treeview",
+  "link": "index2.html",
+  "label": "结构预览",
+  "iClass": "'fa fa-dashboard'",
+  "children": []
+}, {
+  "liClass": "treeview",
+  "link": "#",
+  "label": "案例",
+  "iClass": "'fa fa-files-o'",
+  "spanClass": "pull-right-container",
+  "spanChildIClass": "label label-primary pull-right",
+  "children": [{
+    "ulClass": "treeview-menu",
+    "children": [{
+        "liClass": "treeview",
+        "link": "#",
+        "label": "文字",
+        "iClass": "'fa fa-circle-o'",
+        "children": []
+      },
+      {
+        "liClass": "treeview",
+        "link": "#",
+        "label": "文字",
+        "iClass": "'fa fa-circle-o'",
+        "children": []
+      },
+      {
+        "liClass": "treeview",
+        "link": "#",
+        "label": "文字",
+        "iClass": "'fa fa-circle-o'",
+        "children": []
+      },
+      {
+        "liClass": "treeview",
+        "link": "#",
+        "label": "文字",
+        "iClass": "'fa fa-circle-o'",
+        "children": []
+      },
+      {
+        "liClass": "treeview",
+        "link": "#",
+        "label": "文字",
+        "iClass": "'fa fa-circle-o'",
+        "children": []
+      },
+      {
+        "liClass": "treeview",
+        "link": "#",
+        "label": "文字",
+        "iClass": "'fa fa-circle-o'",
+        "children": []
+      },
+      {
+        "liClass": "treeview",
+        "link": "#",
+        "label": "文字",
+        "iClass": "'fa fa-circle-o'",
+        "children": []
+      },
+      {
+        "liClass": "treeview",
+        "link": "#",
+        "label": "文字",
+        "iClass": "'fa fa-circle-o'",
+        "children": []
+      },
+      {
+        "liClass": "treeview",
+        "link": "#",
+        "label": "文字",
+        "iClass": "'fa fa-circle-o'",
+        "children": []
+      },
+      {
+        "liClass": "treeview",
+        "link": "#",
+        "label": "货商价格影响、环比",
+        "iClass": "'fa fa-circle-o'",
+        "children": []
+      },
+      {
+        "liClass": "treeview",
+        "link": "#",
+        "label": "文字",
+        "iClass": "'fa fa-circle-o'",
+        "children": []
+      },
+      {
+        "liClass": "treeview",
+        "link": "#",
+        "label": "文字",
+        "iClass": "'fa fa-circle-o'",
+        "children": []
+      },
+      {
+        "liClass": "treeview",
+        "link": "#",
+        "label": "文字",
+        "iClass": "'fa fa-circle-o'",
+        "children": []
+      },
+      {
+        "liClass": "treeview",
+        "link": "#",
+        "label": "1.0.01",
+        "iClass": "'fa fa-circle-o'",
+        "children": []
+      },
+      {
+        "liClass": "treeview",
+        "link": "#",
+        "label": "1.2.11",
+        "iClass": "'fa fa-circle-o'",
+        "children": []
+      }
+    ]
+  }]
+}, {
+  "liClass": "treeview",
+  "link": "#",
+  "label": "文字",
+  "iClass": "'fa fa-share'",
+  "spanClass": "pull-right-container",
+  "spanChildIClass": "fa fa-angle-left pull-right",
+  "children": [{
+    "ulClass": "treeview-menu",
+    "children": [{
+        "liClass": "treeview",
+        "link": "#",
+        "label": "文字",
+        "iClass": "'fa fa-circle-o'",
+        "spanClass": "pull-right-container",
+        "spanChildIClass": "fa fa-angle-left pull-right",
+        "children": [{
           "ulClass": "treeview-menu",
-          "children": [
+          "children": [{
+            "liClass": "treeview",
+            "link": "#",
+            "label": "文字",
+            "iClass": "'fa fa-circle-o'",
+            "spanClass": "pull-right-container",
+            "spanChildIClass": "fa fa-angle-left pull-right",
+            "children": [{
+              "ulClass": "treeview-menu",
+              "children": [{
+                  "liClass": "treeview",
+                  "link": "#",
+                  "label": "文字",
+                  "iClass": "'fa fa-circle-o'",
+                  "children": []
+                },
+                {
+                  "liClass": "treeview",
+                  "link": "#",
+                  "label": "文字",
+                  "iClass": "'fa fa-circle-o'",
+                  "children": []
+                },
+                {
+                  "liClass": "treeview",
+                  "link": "#",
+                  "label": "文字",
+                  "iClass": "'fa fa-circle-o'",
+                  "children": []
+                },
+                {
+                  "liClass": "treeview",
+                  "link": "#",
+                  "label": "文字",
+                  "iClass": "'fa fa-circle-o'",
+                  "children": []
+                },
+                {
+                  "liClass": "treeview",
+                  "link": "#",
+                  "label": "文字",
+                  "iClass": "'fa fa-circle-o'",
+                  "children": []
+                },
+                {
+                  "liClass": "treeview",
+                  "link": "#",
+                  "label": "文字",
+                  "iClass": "'fa fa-circle-o'",
+                  "children": []
+                },
+                {
+                  "liClass": "treeview",
+                  "link": "#",
+                  "label": "文字",
+                  "iClass": "'fa fa-circle-o'",
+                  "children": []
+                },
+                {
+                  "liClass": "treeview",
+                  "link": "#",
+                  "label": "文字",
+                  "iClass": "'fa fa-circle-o'",
+                  "children": []
+                }
+              ]
+            }]
+          }]
+        }]
+      },
+      {
+        "liClass": "treeview",
+        "link": "#",
+        "label": "文字",
+        "iClass": "'fa fa-circle-o'",
+        "spanClass": "pull-right-container",
+        "spanChildIClass": "fa fa-angle-left pull-right",
+        "children": [{
+          "ulClass": "treeview-menu",
+          "children": [{
+            "liClass": "treeview",
+            "link": "#",
+            "label": "文字",
+            "iClass": "'fa fa-circle-o'",
+            "spanClass": "pull-right-container",
+            "spanChildIClass": "fa fa-angle-left pull-right",
+            "children": [{
+              "ulClass": "treeview-menu",
+              "children": [{
+                  "type": "li",
+                  "liClass": "treeview",
+                  "link": "#",
+                  "label": "文字",
+                  "iClass": "'fa fa-circle-o'",
+                  "children": []
+                },
+                {
+                  "liClass": "treeview",
+                  "link": "#",
+                  "label": "文字",
+                  "iClass": "'fa fa-circle-o'",
+                  "children": []
+                },
+                {
+                  "liClass": "treeview",
+                  "link": "#",
+                  "label": "文字",
+                  "iClass": "'fa fa-circle-o'",
+                  "children": []
+                }
+              ]
+            }]
+          }]
+        }]
+      },
+      {
+        "liClass": "treeview",
+        "link": "#",
+        "label": "文字",
+        "iClass": "'fa fa-circle-o'",
+        "spanClass": "pull-right-container",
+        "spanChildIClass": "fa fa-angle-left pull-right",
+        "children": [{
+          "ulClass": "treeview-menu",
+          "children": [{
+              "liClass": "treeview",
+              "link": "#",
+              "label": "文字",
+              "iClass": "'fa fa-circle-o'",
+              "spanClass": "pull-right-container",
+              "spanChildIClass": "fa fa-angle-left pull-right",
+              "children": [{
+                "ulClass": "treeview-menu",
+                "children": [{
+                    "liClass": "treeview",
+                    "link": "#",
+                    "label": "文字",
+                    "iClass": "'fa fa-circle-o'",
+                    "children": []
+                  },
+                  {
+                    "liClass": "treeview",
+                    "link": "#",
+                    "label": "文字",
+                    "iClass": "'fa fa-circle-o'",
+                    "children": []
+                  }
+                ]
+              }]
+            },
             {
               "liClass": "treeview",
               "link": "#",
               "label": "文字",
               "iClass": "'fa fa-circle-o'",
-              "children": []
-            },
-            {
-              "liClass": "treeview",
-              "link": "#",
-              "label": "文字",
-              "iClass": "'fa fa-circle-o'",
-              "children": []
-            },
-            {
-              "liClass": "treeview",
-              "link": "#",
-              "label": "文字",
-              "iClass": "'fa fa-circle-o'",
-              "children": []
-            },
-            {
-              "liClass": "treeview",
-              "link": "#",
-              "label": "文字",
-              "iClass": "'fa fa-circle-o'",
-              "children": []
-            },
-            {
-              "liClass": "treeview",
-              "link": "#",
-              "label": "文字",
-              "iClass": "'fa fa-circle-o'",
-              "children": []
-            },
-            {
-              "liClass": "treeview",
-              "link": "#",
-              "label": "文字",
-              "iClass": "'fa fa-circle-o'",
-              "children": []
-            },
-            {
-              "liClass": "treeview",
-              "link": "#",
-              "label": "文字",
-              "iClass": "'fa fa-circle-o'",
-              "children": []
-            },
-            {
-              "liClass": "treeview",
-              "link": "#",
-              "label": "文字",
-              "iClass": "'fa fa-circle-o'",
-              "children": []
-            },
-            {
-              "liClass": "treeview",
-              "link": "#",
-              "label": "文字",
-              "iClass": "'fa fa-circle-o'",
-              "children": []
-            },
-            {
-              "liClass": "treeview",
-              "link": "#",
-              "label": "货商价格影响、环比",
-              "iClass": "'fa fa-circle-o'",
-              "children": []
-            },
-            {
-              "liClass": "treeview",
-              "link": "#",
-              "label": "文字",
-              "iClass": "'fa fa-circle-o'",
-              "children": []
-            },
-            {
-              "liClass": "treeview",
-              "link": "#",
-              "label": "文字",
-              "iClass": "'fa fa-circle-o'",
-              "children": []
-            },
-            {
-              "liClass": "treeview",
-              "link": "#",
-              "label": "文字",
-              "iClass": "'fa fa-circle-o'",
-              "children": []
-            },
-            {
-              "liClass": "treeview",
-              "link": "#",
-              "label": "1.0.01",
-              "iClass": "'fa fa-circle-o'",
-              "children": []
-            },
-            {
-              "liClass": "treeview",
-              "link": "#",
-              "label": "1.2.11",
-              "iClass": "'fa fa-circle-o'",
-              "children": []
+              "spanClass": "pull-right-container",
+              "spanChildIClass": "fa fa-angle-left pull-right",
+              "children": [{
+                "ulClass": "treeview-menu",
+                "children": [{
+                    "liClass": "treeview",
+                    "link": "#",
+                    "label": "文字",
+                    "iClass": "'fa fa-circle-o'",
+                    "children": []
+                  },
+                  {
+                    "liClass": "treeview",
+                    "link": "#",
+                    "label": "文字",
+                    "iClass": "'fa fa-circle-o'",
+                    "children": []
+                  },
+                  {
+                    "liClass": "treeview",
+                    "link": "#",
+                    "label": "文字",
+                    "iClass": "'fa fa-circle-o'",
+                    "children": []
+                  },
+                  {
+                    "liClass": "treeview",
+                    "link": "#",
+                    "label": "文字",
+                    "iClass": "'fa fa-circle-o'",
+                    "children": []
+                  },
+                  {
+                    "liClass": "treeview",
+                    "link": "#",
+                    "label": "文字",
+                    "iClass": "'fa fa-circle-o'",
+                    "children": []
+                  },
+                  {
+                    "liClass": "treeview",
+                    "link": "#",
+                    "label": "文字",
+                    "iClass": "'fa fa-circle-o'",
+                    "children": []
+                  }
+                ]
+              }]
             }
           ]
-        }
-      ]
-    },
-    {
-      "liClass": "treeview",
-      "link": "#",
-      "label": "文字",
-      "iClass": "'fa fa-share'",
-      "spanClass": "pull-right-container",
-      "spanChildIClass": "fa fa-angle-left pull-right",
-      "children": [
-        {
-          "ulClass": "treeview-menu",
-          "children": [
-            {
-              "liClass": "treeview",
-              "link": "#",
-              "label": "文字",
-              "iClass": "'fa fa-circle-o'",
-              "spanClass": "pull-right-container",
-              "spanChildIClass": "fa fa-angle-left pull-right",
-              "children": [
-                {
-                  "ulClass": "treeview-menu",
-                  "children": [
-                    {
-                      "liClass": "treeview",
-                      "link": "#",
-                      "label": "文字",
-                      "iClass": "'fa fa-circle-o'",
-                      "spanClass": "pull-right-container",
-                      "spanChildIClass": "fa fa-angle-left pull-right",
-                      "children": [
-                        {
-                          "ulClass": "treeview-menu",
-                          "children": [
-                            {
-                              "liClass": "treeview",
-                              "link": "#",
-                              "label": "文字",
-                              "iClass": "'fa fa-circle-o'",
-                              "children": []
-                            },
-                            {
-                              "liClass": "treeview",
-                              "link": "#",
-                              "label": "文字",
-                              "iClass": "'fa fa-circle-o'",
-                              "children": []
-                            },
-                            {
-                              "liClass": "treeview",
-                              "link": "#",
-                              "label": "文字",
-                              "iClass": "'fa fa-circle-o'",
-                              "children": []
-                            },
-                            {
-                              "liClass": "treeview",
-                              "link": "#",
-                              "label": "文字",
-                              "iClass": "'fa fa-circle-o'",
-                              "children": []
-                            },
-                            {
-                              "liClass": "treeview",
-                              "link": "#",
-                              "label": "文字",
-                              "iClass": "'fa fa-circle-o'",
-                              "children": []
-                            },
-                            {
-                              "liClass": "treeview",
-                              "link": "#",
-                              "label": "文字",
-                              "iClass": "'fa fa-circle-o'",
-                              "children": []
-                            },
-                            {
-                              "liClass": "treeview",
-                              "link": "#",
-                              "label": "文字",
-                              "iClass": "'fa fa-circle-o'",
-                              "children": []
-                            },
-                            {
-                              "liClass": "treeview",
-                              "link": "#",
-                              "label": "文字",
-                              "iClass": "'fa fa-circle-o'",
-                              "children": []
-                            }
-                          ]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "liClass": "treeview",
-              "link": "#",
-              "label": "文字",
-              "iClass": "'fa fa-circle-o'",
-              "spanClass": "pull-right-container",
-              "spanChildIClass": "fa fa-angle-left pull-right",
-              "children": [
-                {
-                  "ulClass": "treeview-menu",
-                  "children": [
-                    {
-                      "liClass": "treeview",
-                      "link": "#",
-                      "label": "文字",
-                      "iClass": "'fa fa-circle-o'",
-                      "spanClass": "pull-right-container",
-                      "spanChildIClass": "fa fa-angle-left pull-right",
-                      "children": [
-                        {
-                          "ulClass": "treeview-menu",
-                          "children": [
-                            {
-                              "type": "li",
-                              "liClass": "treeview",
-                              "link": "#",
-                              "label": "文字",
-                              "iClass": "'fa fa-circle-o'",
-                              "children": []
-                            },
-                            {
-                              "liClass": "treeview",
-                              "link": "#",
-                              "label": "文字",
-                              "iClass": "'fa fa-circle-o'",
-                              "children": []
-                            },
-                            {
-                              "liClass": "treeview",
-                              "link": "#",
-                              "label": "文字",
-                              "iClass": "'fa fa-circle-o'",
-                              "children": []
-                            }
-                          ]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "liClass": "treeview",
-              "link": "#",
-              "label": "文字",
-              "iClass": "'fa fa-circle-o'",
-              "spanClass": "pull-right-container",
-              "spanChildIClass": "fa fa-angle-left pull-right",
-              "children": [
-                {
-                  "ulClass": "treeview-menu",
-                  "children": [
-                    {
-                      "liClass": "treeview",
-                      "link": "#",
-                      "label": "文字",
-                      "iClass": "'fa fa-circle-o'",
-                      "spanClass": "pull-right-container",
-                      "spanChildIClass": "fa fa-angle-left pull-right",
-                      "children": [
-                        {
-                          "ulClass": "treeview-menu",
-                          "children": [
-                            {
-                              "liClass": "treeview",
-                              "link": "#",
-                              "label": "文字",
-                              "iClass": "'fa fa-circle-o'",
-                              "children": []
-                            },
-                            {
-                              "liClass": "treeview",
-                              "link": "#",
-                              "label": "文字",
-                              "iClass": "'fa fa-circle-o'",
-                              "children": []
-                            }
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "liClass": "treeview",
-                      "link": "#",
-                      "label": "文字",
-                      "iClass": "'fa fa-circle-o'",
-                      "spanClass": "pull-right-container",
-                      "spanChildIClass": "fa fa-angle-left pull-right",
-                      "children": [
-                        {
-                          "ulClass": "treeview-menu",
-                          "children": [
-                            {
-                              "liClass": "treeview",
-                              "link": "#",
-                              "label": "文字",
-                              "iClass": "'fa fa-circle-o'",
-                              "children": []
-                            },
-                            {
-                              "liClass": "treeview",
-                              "link": "#",
-                              "label": "文字",
-                              "iClass": "'fa fa-circle-o'",
-                              "children": []
-                            },
-                            {
-                              "liClass": "treeview",
-                              "link": "#",
-                              "label": "文字",
-                              "iClass": "'fa fa-circle-o'",
-                              "children": []
-                            },
-                            {
-                              "liClass": "treeview",
-                              "link": "#",
-                              "label": "文字",
-                              "iClass": "'fa fa-circle-o'",
-                              "children": []
-                            },
-                            {
-                              "liClass": "treeview",
-                              "link": "#",
-                              "label": "文字",
-                              "iClass": "'fa fa-circle-o'",
-                              "children": []
-                            },
-                            {
-                              "liClass": "treeview",
-                              "link": "#",
-                              "label": "文字",
-                              "iClass": "'fa fa-circle-o'",
-                              "children": []
-                            }
-                          ]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    },
+        }]
+      }
+    ]
+  }]
+},
